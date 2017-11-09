@@ -15,6 +15,8 @@
         "storageName": "[substring(toLower(concat('incidentblobstg', uniqueString(resourceGroup().id))), 0, 24)]",
         "diagStorageName": "[substring(toLower(concat('incidentdiagstg', uniqueString(resourceGroup().id))), 0, 24)]",
         "storageType": "Standard_LRS",
+        "cdnProfileName": "[variables('storageName')]",
+        "cdnSku": "Standard_Akamai",
         "queueName": "thumbnails",
         "imgContainerName": "images",
         "docDBName": "[concat('incidentdb', uniqueString(resourceGroup().id))]",
@@ -39,8 +41,7 @@
         "dtlVmPassword": "Devc@mp2016!",
         "chocoPackages": "git-credential-winstore,webpicmd,eclipse,jre8,javaruntime"
     },
-    "resources": [
-        {
+    "resources": [{
             "name": "[variables('storageName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "location": "[resourceGroup().location]",
@@ -64,6 +65,15 @@
             },
             "properties": {
                 "accountType": "[variables('storageType')]"
+            }
+        },
+        {
+            "name": "[variables('cdnProfileName')]",
+            "type": "Microsoft.Cdn/profiles",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2016-04-02",
+            "sku": {
+                "name": "[variables('cdnSku')]"
             }
         },
         {
@@ -137,8 +147,7 @@
                 "name": "[variables('apiAppName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
             },
-            "resources": [
-                {
+            "resources": [{
                     "name": "appsettings",
                     "type": "config",
                     "apiVersion": "2015-08-01",
@@ -232,8 +241,7 @@
                 "name": "[variables('dotnetAppName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
             },
-            "resources": [
-                {
+            "resources": [{
                     "name": "appsettings",
                     "type": "config",
                     "apiVersion": "2015-08-01",
@@ -306,8 +314,7 @@
                 "name": "[variables('nodejsAppName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
             },
-            "resources": [
-                {
+            "resources": [{
                     "name": "appsettings",
                     "type": "config",
                     "apiVersion": "2015-08-01",
@@ -381,8 +388,7 @@
                 "name": "[variables('javaAppName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
             },
-            "resources": [
-                {
+            "resources": [{
                     "apiVersion": "2015-08-01",
                     "name": "web",
                     "type": "config",
@@ -457,8 +463,7 @@
             "type": "Microsoft.DevTestLab/labs",
             "name": "[variables('dtlName')]",
             "location": "[resourceGroup().location]",
-            "resources": [
-                {
+            "resources": [{
                     "apiVersion": "2016-05-15",
                     "name": "[variables('dtlVnetName')]",
                     "type": "virtualnetworks",
@@ -555,8 +560,7 @@
                 "isAuthenticationWithSshKey": false,
                 "disallowPublicIpAddress": false,
                 "allowClaim": false,
-                "artifacts": [
-                    {
+                "artifacts": [{
                         "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', variables('dtlName'), 'public repo', 'windows-chrome')]"
                     },
                     {
@@ -570,17 +574,14 @@
                     },
                     {
                         "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', variables('dtlName'), 'public repo', 'windows-chocolatey')]",
-                        "parameters": [
-                            {
-                                "name": "packages",
-                                "value": "[variables('chocoPackages')]"
-                            }
-                        ]
+                        "parameters": [{
+                            "name": "packages",
+                            "value": "[variables('chocoPackages')]"
+                        }]
                     },
                     {
                         "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', variables('dtlName'), 'public repo', 'windows-run-powershell')]",
-                        "parameters": [
-                            {
+                        "parameters": [{
                                 "name": "scriptFileUris",
                                 "value": "[[\"https://raw.githubusercontent.com/AzureCAT-GSI/DevCamp/master/Shared/ARMTemplate/Scripts/InstallNodeJS.ps1\"]"
                             },
