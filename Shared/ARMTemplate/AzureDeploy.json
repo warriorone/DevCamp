@@ -17,6 +17,8 @@
         "storageType": "Standard_LRS",
         "cdnProfileName": "[variables('storageName')]",
         "cdnSku": "Standard_Akamai",
+        "cdnEndpointName": "[variables('storageName')]",
+        "cdnOriginHostHeader": "[concat(variables('storageName'), '.blob.core.windows.net')]",
         "queueName": "thumbnails",
         "imgContainerName": "images",
         "docDBName": "[concat('incidentdb', uniqueString(resourceGroup().id))]",
@@ -74,7 +76,29 @@
             "apiVersion": "2016-04-02",
             "sku": {
                 "name": "[variables('cdnSku')]"
-            }
+            },
+            "resources": [{
+                "apiVersion": "2016-04-02",
+                "dependsOn": [
+                    "[resourceId('Microsoft.Cdn/profiles', variables('cdnProfileName'))]"
+                ],
+                "location": "[resourceGroup().location]",
+                "name": "[variables('cdnEndpointName')]",
+                "type": "endpoints",
+                "properties": {
+                    "isHttpAllowed": true,
+                    "isHttpsAllowed": true,
+                    "origins": [{
+                        "name": "[variables('cdnEndpointName')]",
+                        "properties": {
+                            "hostname": "[variables('cdnOriginHostHeader')]",
+                            "httpPort": 80,
+                            "httpsPort": 443
+                        }
+                    }],
+                    "isCompressionEnabled": false
+                }
+            }]
         },
         {
             "name": "[variables('redisCacheName')]",
