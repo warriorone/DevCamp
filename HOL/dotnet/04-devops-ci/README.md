@@ -262,7 +262,7 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
     ![image](./media/2017-06-22_11_29_00.png)
 
-1. A new browser tab will open with a splash screen visible:
+1. A new browser tab will open with a splash screen visible. It will look similar to this image (it gets updated regularly with new information) and tell you that the app service has been created:
 
     ![image](./media/image-031.gif)
 
@@ -406,4 +406,4 @@ After completing this module, you can continue on to Module 5: ARM.
 ### View Module 5 instructions for [.NET](../05-arm-cd).
 
 ---
-Copyright 2016 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.

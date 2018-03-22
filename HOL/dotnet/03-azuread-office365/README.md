@@ -41,7 +41,7 @@ In this hands-on lab, you will learn how to:
     <add key="GRAPH_API_URL" value="https://graph.microsoft.com" />
 ```
 
-> &#x1F53A; If you did complete HOL 3 just continue with the same solution you have been using. &#x1F53A;
+> &#x1F53A; If you did complete HOL 2 just continue with the same solution you have been using. &#x1F53A;
 
 ## Exercises
 
@@ -81,7 +81,7 @@ AzureAD can handle authentication for web applications. First we will create a n
 
     ![image](./media/2017-21-06_08_08_00.png)
 
-1. On the Registration page, take note of the `Application ID`. This will be used as an environment variable named `AAD_CLIENT_ID` and is used to configure the authentication library.  
+1. On the Registration page, take note of the `Application ID`. This will be used as an environment variable named `AAD_APP_ID` and is used to configure the authentication library.  
 
     We also need to generate a client secret. Select the `Generate New Password` button.
 
@@ -1075,4 +1075,4 @@ After completing this module, you can continue on to Module 4: DevOps with Visua
 ### View Module 4 instructions for [.NET](../04-devops-ci).
 
 ---
-Copyright 2016 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.

@@ -178,7 +178,14 @@ You have now activated a Visual Studio Team Services Trial Subscription, which w
 
 1. We have created an Azure Resource Group template that will configure the resources you need in Azure for the DevCamp. To deploy these resources in your Azure subscription, `control + click` on the blue ***Deploy to Azure*** button below (on a MAC, use `Apple Key + click`):
 
-    :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
+    **Full deployment:** :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
+
+    **Alternative without artifacts:** :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeployAlt.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
+    > If you are using the alternative deployment you have to manually install:
+    > [Chrome](https://www.google.com/chrome/),
+    > [git](https://git-scm.com/download/win),
+    > [VS Code](https://code.visualstudio.com/docs/?dv=win)
+    > and execute `\DevCamp\Shared\ARMTemplate\Scripts\InstallNodeJS.ps1` in a PowerShell to install Chocolatey and NodeJS.
 
 1. You should see a new tab open in your browser and open the Azure portal, with a blade that looks like this:
 
@@ -279,7 +286,7 @@ You have now activated a Visual Studio Team Services Trial Subscription, which w
     node -v
     ```
 
-    If the Node version on your machine does not equal v6, we will need to update the version. In a browser window open a browser window and go to [nodejs.org](http://nodejs.org), and click on the `Other Downloads` link under the current version LTS, you may have to scroll down and click on `Previous Releases` to find v6 or download it directly from [here](https://nodejs.org/dist/latest-v6.x/node-v6.12.0-x86.msi). If a newer version is already installed you have to uninstall it first:
+    If the Node version on your machine does not equal v6, we will need to update the version. Open a browser window and go to [nodejs.org](http://nodejs.org), and click on the `Other Downloads` link under the current version LTS, you may have to scroll down and click on `Previous Releases` to find v6 or download it directly from [here](https://nodejs.org/dist/latest-v6.x/node-v6.12.3-x86.msi). If a newer version is already installed you have to uninstall it first:
 
     ![image](./media/2017-06-19_08_48_00.png)
 
@@ -358,7 +365,7 @@ You have now activated a Visual Studio Team Services Trial Subscription, which w
 
     ![image](./media/2017-06-19_09_29_00.png)
     
-    You might have to manually download a previous version of the Scala IDE for your Eclipse version from [http://scala-ide.org/download/prev-stable.html](http://scala-ide.org/download/prev-stable.html). Install it by extracting the zip file. Again select `Help` -> `Install New Software...`, and click the `Add..` button next to the `Work with` dropdown. Select the extracted folder. Now the Scala IDE components will be listed. Select them all and continue the installation.
+    If you encounter an error you might have to manually download a previous version of the Scala IDE **matching your Eclipse version** from [http://scala-ide.org/download/prev-stable.html](http://scala-ide.org/download/prev-stable.html) (select the highest available version for matching your Eclipse version). Install it by extracting the zip file. Again select `Help` -> `Install New Software...`, and click the `Add..` button next to the `Work with` dropdown. Select the extracted folder. Now the Scala IDE components will be listed. Select them all and continue the installation.
 
     Also, install the `Spring Tool Suite (STS) for Eclipse` package by using the menu item `Help` -> `Eclipse Marketplace...`, type `spring` in the `Find:` box and choose `Go`. In the list of packages, scroll down to `Spring Tools (aka Spring IDE and Spring Tool Suite) X.X.X.RELEASE` and click `Install`.
 

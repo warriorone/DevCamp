@@ -790,3 +790,7 @@ Your final code should look like:
 ## HOL Notes
 
 1. If you take a break in the middle of the exercise and need to re-find your Machine Learning Studio Web Services, these can be in an unintuitive location. Browse to https://studio.azureml.net, and click on "Web Services" in the left toolbar. However, your web service likely does not show up in this screen, as we did not create it in classic mode. Therefore, look for the "If you don't see your web service, try here" link in the top right of your screen. Your Web Services should be accessible from the new interface.
+
+----
+
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.

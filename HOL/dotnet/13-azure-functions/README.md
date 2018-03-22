@@ -374,3 +374,7 @@ Save your code, then open up your CosmosDB browser window (or CPL application) a
 2. Add an "e-mail" attribute to the CosmosDB record, and populate it in the IncidentController using the current user's address (or allow the user to enter their own address by adding a property to the creation form). Use this email attribute instead of the hard-coded address we used in this module. 
 3. Add error checking to Exercise 3 - CosmosDB documents are unstructured, so a production quality application would have safety logic ensuring we get all fields we need and handling appropriately (default values or failing)
 4. Disable the e-mail functionality in the IncidentController from HOL3 to prevent duplicate mailings
+
+----
+
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.

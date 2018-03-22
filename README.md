@@ -214,7 +214,7 @@ In this lab you will setup an Azure IoT Hub, Create Devices, develop a .NET Core
 
 This module contains a short introduction to Containers, Cognitive Services, the Bot Framework and Skype for Business SDK.
 
-#### View [PowerPoint](Presentation/Module09-Cloud%20Building%20Blocks.pptx?raw=true)
+#### View [PowerPoint](Presentation/Module10-Cloud%20Building%20Blocks.pptx?raw=true)
 
 ----
 

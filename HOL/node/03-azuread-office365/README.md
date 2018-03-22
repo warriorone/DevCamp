@@ -28,6 +28,8 @@ In this hands-on lab, you will learn how to:
 
 > &#x1F53A; **Note**: If you did not complete the previous labs, the project in the [start](start) folder is cumulative. But you need to add the previous HOL's environment variables and make all necessary changes to Azure. &#x1F53A;
 
+> &#x1F53A; If you did complete HOL 2 just continue with the same solution you have been using. &#x1F53A;
+
 ## Exercises
 
 This hands-on-lab has the following exercises:

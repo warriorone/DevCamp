@@ -177,7 +177,14 @@ You have now activated a Visual Studio Team Services Trial Subscription, which w
 
 1. We have created an Azure Resource Group template that will configure the resources you need in Azure for the DevCamp. To deploy these resources in your Azure subscription, `control + click` on the blue ***Deploy to Azure*** button below (on a MAC, use `Apple Key + click`):
 
-    :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
+    **Full deployment:** :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
+
+    **Alternative without artifacts:** :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeployAlt.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
+    > If you are using the alternative deployment you have to manually install:
+    > [Chrome](https://www.google.com/chrome/),
+    > [git](https://git-scm.com/download/win),
+    > [VS Code](https://code.visualstudio.com/docs/?dv=win)
+    > and execute `\DevCamp\Shared\ARMTemplate\Scripts\InstallNodeJS.ps1` in a PowerShell to install Chocolatey and NodeJS.>
 
 1. You should see a new tab open in your browser and open the Azure portal, with a blade that looks like this:
 
@@ -398,7 +405,7 @@ You have now activated a Visual Studio Team Services Trial Subscription, which w
  
     ![image](./media/2017-06-15_16_46_00.png)
 
-1. The gear at the top of the screen lets you set the color palate for the portal, whether or not there will be animations, and other options for the portal itself:
+1. The gear at the top of the screen lets you set the color palette for the portal, whether or not there will be animations, and other options for the portal itself:
 
     ![image](./media/2016-10-19_15-22-14b.gif)
 
@@ -553,4 +560,4 @@ After completing this module, you can continue on to Module 2: Building modern c
 ### View Module 2 instructions for [.NET](../02-modern-cloud-apps).
 
 ---
-Copyright 2016 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.

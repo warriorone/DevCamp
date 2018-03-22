@@ -533,47 +533,27 @@ To make our bot accessible we have to publish it in a public location. An Azure 
 
     ![image](./media/2017-07-12_12_55_00.png)
 
-1. Open a browser and navigate to the [Bot Framework Portal](https://dev.botframework.com/bots). After you sign in, click `Create`:
+1. Open a browser and navigate to the [Azure Portal](https://portal.azure.com). After you sign in, select the DevCamp resource group and click `Add`. Enter `Bot` in the filter box, then select the `Bot Channels Registration` and click `Create` on the details blade.:
 
     ![image](./media/2017-11-02_09_56_00.png)
 
-1. In the dialog select `Register an existing bot using Bot Builder SDK` and click `Ok`:
+1. Enter a name for your bot, select the `F0` pricing tier and enter the `Destination URL` you noted earlier and add `https` and `/api/messages` as the messaging endpoint. It should look similar to this: `https://citypowerbot20170712104043.azurewebsites.net/api/messages`. Click `Create` again.
 
     ![image](./media/2017-11-02_09_58_00.png)
 
-    **Complete the Bot profile section of the form.**
+1. An app will be automatically registered in the [Application Registration Portal](https://apps.dev.microsoft.com). Navigate to the site and select your bot's registration. Click `Generate new password` and note the password and your bot's application id:
 
-    1. Optionally upload an icon that will represent your bot in the conversation.
-    1. Provide your bot's `Display Name`. When users search for this bot, this is the name that will appear in the search results.
-    1. Provide your bot's `Handle`. This value will be used in the URL for your bot and cannot be changed after registration.
-    1. Provide a `Description` of your bot. This is the description that will appear in search results, so it should accurately describe what the bot does.
+    ![image](./media/2017-07-12_13_17_00.png)
 
-    **Complete the Configuration section of the form.**
-
-    1. Provide your bot's HTTPS messaging endpoint. This is the endpoint where your bot will receive HTTP POST messages from Bot Connector. Use the `Destination URL` you noted earlier and add `https` and `/api/messages`. It should look similar to this: `https://citypowerbot20170712104043.azurewebsites.net/api/messages`.
-        
-        ![image](./media/2017-07-12_13_17_00.png)
-
-    1. Click `Create Microsoft App ID and password`.
-        * Note the App ID.
-        * On the next page, click `Generate an app password to continue`.
-        * Copy and securely store the password that is shown, and then click `Ok`.
-        * Click `Finish and go back to Bot Framework`.
-        * Back in the Bot Framework Portal, the `App ID` field is now populated.
-        
-        ![image](./media/2017-07-12_13_26_00.png)
-
-    **Complete the Admin section of the form.**
-
-    1. Specify the email address(es) for the Owner(s) of the bot.
-
-    1. Check to indicate that you have read and agree to the Terms of Use, Privacy Statement, and Code of Conduct.
-
-    1. Click `Register` to complete the registration process.
+1. Return to the bot channel registration and click `Settings`. Note the `Bot handle`:
 
     ![image](./media/2017-07-12_13_29_00.png)
 
-1. In Visual Studio, open the `CityPowerBot` -> `Web.config` and enter the values you just gathered for the `BotId` (the bot's `Handle` you entered during the registration process), `MicrosoftAppId` and `MicrosoftAppPassword` in the `appSettings` section.
+1. In Azure navigate to your bot's app service and click `Application settings` and create three new settings `MicrosoftAppId`, `MicrosoftAppPassword` and `BotId` and enter the values you just gathered (the `BotId` is the `Bot handle` from the bot channel registration settings):
+
+    ![image](./media/2017-07-12_13_26_00.png)
+
+1. In Visual Studio, open the `CityPowerBot` -> `Web.config` and enter the same values for the keys `BotId`, `MicrosoftAppId` and `MicrosoftAppPassword` in the `appSettings` section.
 
     ```xml
     <appSettings>
@@ -603,7 +583,13 @@ To make our bot accessible we have to publish it in a public location. An Azure 
     
     > If you get a Server 500 error message try removing the `Microsoft App ID` and the `Microsoft App Password` and reconnect to the bot.
 
-1. If you like you can now [configure the bot](https://docs.microsoft.com/en-us/bot-framework/portal-configure-channels) to run on one or more channels.
+1. You can also verify your bot by using the `Test in Web Chat` blade within the Azure bot channel registration. **If you cannot connect to the bot try different web browsers.**
+
+    ![image](./media/2018-02-05_09_35_00.png)
+
+1. If you like you can now [configure the bot](https://docs.microsoft.com/en-us/bot-framework/portal-configure-channels) to run on one or more channels by opening the `Channels` blade.
+
+    ![image](./media/2018-02-05_09_38_00.png)
 
 You have now manually created a bot and uploaded it to Azure. An alternative way of creating a bot is using the Azure Bot Service.
 
@@ -612,53 +598,41 @@ You have now manually created a bot and uploaded it to Azure. An alternative way
 
 You have seen some of the basics of bot development. In the exercises you have used the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) template to create the interaction between the user and the bot. Many other templates are available. You can also use [Azure Bot Service](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-overview) to quickly create a bot from within the Azure portal.
 
-1. To create a bot using the Azure Bot Service navigate to the DevCamp resource group and click `Add`. Enter `Bot Service` in the filter box, then select the `Bot Service (Preview)` and click `Create` on the details blade.
+1. To create a bot using the Azure Bot Service navigate to the DevCamp resource group and click `Add`. Enter `Bot` in the filter box, then select the `Web App Bot` and click `Create` on the details blade.
 
     ![image](./media/2017-07-11_16_31_00.png)
 
-1. Enter a name for your bot and click `Create` again.
+1. Enter a name for your bot, select the `Form (C#)` bot template, the `F0` pricing tier and click `Create` again.
 
     ![image](./media/2017-07-11_16_37_00.png)
 
-1. Navigate to the bot in your resource group. You will be redirected to the template blade. Now you can select your preferred programming language and the template you want to use for your bot. Choose the `Form` to end up with a bot that is again based on the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) template and click `Next`.
+    1. You can find more information on the templates and their application [here](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-overview).
+
+1. Navigate to the bot in your resource group. You will be redirected to the and click `Test in Web Chat`. The `Test` blade will open and you can test your newly created bot right away. **If you cannot connect to the bot try different web browsers.** The newly created bot already contains a sample application, the `simple sandwich bot`. Type a message to start a conversation.
 
     ![image](./media/2017-07-11_16_41_00.png)
 
-1. Click `Manage Microsoft App ID and password` and create a new id for your bot. Copy the App Id and the password to the template blade, check and agree to the Terms of Use and click `Create bot`.
+1. You can now develop and test your bot directly within the Azure Portal. Azure offers an online code editor. You can also download the source code and continue editing it in Visual Studio. Click `Build` and select `Download zip file`.
 
     ![image](./media/2017-07-11_16_28_00.png)
 
-1. The deployment will take some minutes.
+1. The creation of the zip file will take some minutes. Click `Download zip file`.
 
     ![image](./media/2017-07-11_16_42_00.png)
-    
-1. You can find more information on the templates and their application [here](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-overview).
 
-1. You can now develop and test your bot directly within the Azure Portal but should configure continuous integration to be able to add additional files. If you make changes to the code you might have to reload the page for the test section to show the changes. Your new bot is also available via the [Bot Framework Portal](https://dev.botframework.com/bots). You can use a second browser window to test the bot in the Bot Framework Portal.
+1. Extract the zip file and load the solution in Visual Studio. Make changes to your code, e.g. add a topping options in the sandwich model. Right-click the project and click `Publish...`.
 
-1. When you follow the guide provided by Azure to enable continuous integration using what you learned in [HOL 4](../04-devops-ci) you will need to download a project file to run your bot's downloaded code in a local Visual Studio (2015) installation. (See [this guide](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-debug-bot#a-iddebug-csharpa-debug-a-c-bot) which wrongly states that you don't need the file for Visual Studio 2015). Place the [downloaded project file](https://aka.ms/bf-debug-project) in the `messages` folder before you continue.
+    ![image](./media/2017-07-12_09_41_00.png)
 
-    1. Run `dotnet restore` on the same folder.
+1. The publish wizard will open. Select `Connection` to enter the required password.
 
-        ![image](./media/2017-07-12_09_41_00.png)
-    
-    1. Follow the guide and install [Azure Functions CLI](https://www.npmjs.com/package/azure-functions-cli).
-    
-        ![image](./media/2017-07-12_09_42_00.png)
-    
-    1. And also [DotNet CLI](https://github.com/dotnet/cli).
-    
-        ![image](./media/2017-07-12_09_45_00.png)
-    
-    1. And finally the [Command Task Runner Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/e6bf6a3d-7411-4494-8a1e-28c1a8c4ce99).
-    
-        ![image](./media/2017-07-12_09_45_30.png)
-    
-    1. Now start Visual Studio and add the reference `, "Microsoft.Bot.Connector": "1.1.0"` to the `project.json` file.
-    
-        ![image](./media/2017-07-12_10_20_00.png)
+1. You can find the password that Azure created for you in the file `yourbotname.PublishSettings` in the folder `PostDeployScripts` in the value `userPWD`. Copy it to the publish wizard and click `Validate Connection`. When the validation succeeded you can click `Publish` to transmit your changes to Azure.
 
-    1. Your downloaded bot code created by the Azure Bot Service should now compile and you can also use the `Bot Framework Emulator` to debug it locally.
+    ![image](./media/2017-07-12_09_42_00.png)
+
+1. Revisit the `Test in Web Chat` page and talk to your bot again. Your code changes should now be visible.
+
+    ![image](./media/2017-07-12_09_45_00.png)
 
 You have now seen an alternative way to create and debug a bot using the Azure Bot Service. A basic bot can be created completely without a development environment.
 

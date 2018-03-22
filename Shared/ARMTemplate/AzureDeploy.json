@@ -37,7 +37,7 @@
         "dtlTimeZoneId": "UTC",
         "dtlVmUsername": "l-admin",
         "dtlVmPassword": "Devc@mp2016!",
-        "chocoPackages": "Git-Credential-Manager-for-Windows,github,azure-cli,microsoftazurestorageexplorer,webpicmd,eclipse,jre8,javaruntime"
+        "chocoPackages": "Git-Credential-Manager-for-Windows,azure-cli,webpicmd,eclipse,jre8,javaruntime"
     },
     "resources": [
         {
@@ -584,6 +584,23 @@
                             {
                                 "name": "scriptToRun",
                                 "value": "InstallNodeJS.ps1"
+                            },
+                            {
+                                "name": "scriptArguments",
+                                "value": ""
+                            }
+                        ]
+                    },
+    {
+                        "artifactId": "[resourceId('Microsoft.DevTestLab/labs/artifactSources/artifacts', variables('dtlName'), 'public repo', 'windows-run-powershell')]",
+                        "parameters": [
+                            {
+                                "name": "scriptFileUris",
+                                "value": "[[\"https://raw.githubusercontent.com/AzureCAT-GSI/DevCamp/master/Shared/ARMTemplate/Scripts/extrachocolatey.ps1\"]"
+                            },
+                            {
+                                "name": "scriptToRun",
+                                "value": "extrachocolatey.ps1"
                             },
                             {
                                 "name": "scriptArguments",

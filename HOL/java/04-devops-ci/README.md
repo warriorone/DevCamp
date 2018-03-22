@@ -255,7 +255,7 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
     ![image](./media/2017-06-27_10_41_00.png)
 
-1. A new browser tab will open with a splash screen visible:
+1. A new browser tab will open with a splash screen visible. It will look similar to this image (it gets updated regularly with new information) and tell you that the app service has been created:
 
     ![image](./media/image-031.gif)
 

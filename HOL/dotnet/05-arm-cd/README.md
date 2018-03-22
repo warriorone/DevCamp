@@ -133,6 +133,12 @@ We are now ready to deploy our ARM Template containing an App Service Plan, and 
 
 1. Click `Save`.
 
+    > If Visual Studio fails to deploy the template and you receive the error message `Add-AzureRmAccount: The term 'Add-AzureRmAccount' is not recognized...` open an interactive Powershell (`View` -> `Other Windows` -> `Powershell Interactive Window`).
+    > Enter `Connect-AzureRmAccount`.
+    > It should prompt you to log in. Follow the instructions.
+    > Redeploy the template.
+
+
 1. Open the [Azure Portal](https://portal.azure.com) and verify that the app has been created in your resource group with the defined resources.
 
     ![image](./media/2017-06-23_09_04_00.png)
@@ -172,7 +178,7 @@ The resource group is now holding our "Test" environment web app and has been ad
 
     ![image](./media/2017-06-23_10_34_00.png)
 
-    For the `Pre-deployment approvers` option, enter your account name. Then click the `Save` button:
+    For the `Pre-deployment approvers` option, enter your account name and make sure `User requesting a release or deployment should not approve` is **not** checked. Then click the `Save` button:
 
     ![image](./media/2017-11-01_13_01_00.png)
 
@@ -225,4 +231,4 @@ After completing this module, you can continue on to Module 6: Monitoring with A
 ### View Module 6 instructions for [.NET](../06-appinsights).
 
 ---
-Copyright 2016 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
