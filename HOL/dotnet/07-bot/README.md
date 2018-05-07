@@ -633,6 +633,41 @@ You have seen some of the basics of bot development. In the exercises you have u
 
 You have now seen an alternative way to create and debug a bot using the Azure Bot Service. A basic bot can be created completely without a development environment.
 
+## Exercise 8: Azure Functions Bot<a name="ex8"></a>
+
+1.
+
+    ![image](./media/azure-functions-bot/azure-portal-create-a-resource.png)
+
+1.
+	
+    ![image](./media/azure-functions-bot/azure-portal-create-a-resource-search-bot.png)
+
+1.
+	
+    ![image](./media/azure-functions-bot/azure-portal-functions-bot.png)
+
+1.
+	
+    ![image](./media/azure-functions-bot/azure-portal-create-functions-bot.png)
+
+1.
+
+    ![image](./media/azure-functions-bot/azure-portal-all-services.png)
+
+1.
+
+    ![image](./media/azure-functions-bot/azure-portal-all-services-search-bot.png)
+
+1.
+
+    ![image](./media/azure-functions-bot/azure-portal-bot-services.png)
+
+1.
+
+    ![image](./media/azure-functions-bot/azure-portal-bot-services-test-in-web-chat.png)
+
+
 ---
 ## Summary
 
