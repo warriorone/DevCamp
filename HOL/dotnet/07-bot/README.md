@@ -643,11 +643,11 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource-search-bot.png)
 
-1. Create a new `Functions Bot` by clicking on the `Create` button.
+1. Create a new `Functions Bot` by clicking the `Create` button.
 
     ![image](./media/azure-functions-bot/azure-portal-functions-bot.png)
 
-1. Enter all required information to create the bot and click on the `Create` button.
+1. Enter all required information to create the bot and click on the `Create` button. Make sure to select the free Pricing tier `F0 (10K Premium Messages)`.
 
     ![image](./media/azure-functions-bot/azure-portal-create-functions-bot.png)
 
@@ -666,6 +666,23 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 1. You can test the bot by selecting `Test in Web Chat` from the `Bot Management` section. Enter something and the bot will welcome you and reply to your message.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-test-in-web-chat.png)
+
+1. Click on `Create a resource` in the left navigation bar.
+
+    ![image](./media/azure-functions-bot/azure-portal-create-a-resource.png)
+
+1. Enter `translator` in the search box and click on `Translator Text API`.
+
+    ![image](./media/azure-functions-bot/azure-portal-create-a-resource-search-translator.png)
+
+1. Click the `Create` button to create a new Translator Text API service.
+
+    ![image](./media/azure-functions-bot/azure-portal-translator-text-api.png)
+
+1. Enter all required information and select `F0 (2M Up to 2M characters translated per month)` as `Pricing tier`. Click `Create` to continue.
+
+    ![image](./media/azure-functions-bot/azure-portal-create-translator-text-api.png)
+
 
 
 ---
