@@ -639,31 +639,31 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource.png)
 
-1. Enter `bot` in the search box in order to search for `Functions Bot`.
+1. Enter `bot` in the search box and click on `Functions Bot`.
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource-search-bot.png)
 
-1.
+1. Create a new `Functions Bot` by clicking on the `Create` button.
 
     ![image](./media/azure-functions-bot/azure-portal-functions-bot.png)
 
-1.
+1. Enter all required information to create the bot and click on the `Create` button.
 
     ![image](./media/azure-functions-bot/azure-portal-create-functions-bot.png)
 
-1.
+1. Test - Bot Services
 
     ![image](./media/azure-functions-bot/azure-portal-all-services.png)
 
-1.
+1. Serach services - bot
 
     ![image](./media/azure-functions-bot/azure-portal-all-services-search-bot.png)
 
-1.
+1. bot services - select new bot
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services.png)
 
-1.
+1. test in web chat
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-test-in-web-chat.png)
 
