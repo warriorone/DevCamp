@@ -671,7 +671,7 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource.png)
 
-1. Enter `translator` in the search box and click on `Translator Text API`.
+1. Enter `translator` in the search box and select `Translator Text API` from the search results.
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource-search-translator.png)
 
@@ -682,6 +682,14 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 1. Enter all required information and select `F0 (2M Up to 2M characters translated per month)` as `Pricing tier`. Click `Create` to continue.
 
     ![image](./media/azure-functions-bot/azure-portal-create-translator-text-api.png)
+
+1. Search for `cognitive` and select `Cognitive Services` from the search results. You can add a shortcut to the left navigation bar by selecting the star icon.
+
+    ![image](./media/azure-functions-bot/azure-portal-all-services-search-cognitive.png)
+
+1. In `Cognitive Services`, select the newly created service `TranslatorText`.
+
+    ![image](./media/azure-functions-bot/azure-portal-cognitive-services.png)
 
 
 
