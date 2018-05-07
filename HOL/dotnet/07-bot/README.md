@@ -691,6 +691,13 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-cognitive-services.png)
 
+1. Select `Keys` from the `Resource Management` section.
+
+    ![image](./media/azure-functions-bot/azure-portal-cognitive-services-quick-start.png)
+
+1. Here you find the keys which you need to add to your code later to connect to the service.
+
+    ![image](./media/azure-functions-bot/azure-portal-cognitive-services-keys.png)
 
 
 ---
