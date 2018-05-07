@@ -635,20 +635,20 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
 ## Exercise 8: Azure Functions Bot<a name="ex8"></a>
 
-1.
+1. Click on `Create a resource` in the left navigation bar.
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource.png)
 
-1.
-	
+1. Enter `bot` in the search box in order to search for `Functions Bot`.
+
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource-search-bot.png)
 
 1.
-	
+
     ![image](./media/azure-functions-bot/azure-portal-functions-bot.png)
 
 1.
-	
+
     ![image](./media/azure-functions-bot/azure-portal-create-functions-bot.png)
 
 1.
