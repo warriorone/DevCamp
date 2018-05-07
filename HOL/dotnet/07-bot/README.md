@@ -651,19 +651,19 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-create-functions-bot.png)
 
-1. Test - Bot Services
+1. In order to test the new bot, click on `Bot Services` on the left navigation bar. If `Bot Services` is missing, click on `All services` on the left navigation bar.
 
     ![image](./media/azure-functions-bot/azure-portal-all-services.png)
 
-1. Serach services - bot
+1. Search for `bot` and click on `Bot Services`. You can add a shortcut to the left navigation bar by selecting the star icon.
 
     ![image](./media/azure-functions-bot/azure-portal-all-services-search-bot.png)
 
-1. bot services - select new bot
+1. In `Bot Services`, click on the newly created bot. In this example it is called `TranslatorTextBot`.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services.png)
 
-1. test in web chat
+1. You can test the bot by selecting `Test in Web Chat` from the `Bot Management` section. Enter something and the bot will welcome you and reply to your message.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-test-in-web-chat.png)
 
