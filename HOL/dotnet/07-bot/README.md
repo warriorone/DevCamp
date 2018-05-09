@@ -34,6 +34,7 @@ This hands-on-lab has the following exercises:
 * [Exercise 5: Analyze submitted pictures automatically](#ex5)
 * [Exercise 6: Host your bot in Azure](#ex6)
 * [Exercise 7: Azure Bot Service](#ex7) 
+* [Exercise 8: Azure Functions Bot](#ex8) 
 
 ---
 ## Exercise 1: Set up your environment<a name="ex1"></a>
@@ -698,6 +699,21 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 1. Here you find the keys which you need to add to your code later to connect to the service.
 
     ![image](./media/azure-functions-bot/azure-portal-cognitive-services-keys.png)
+
+
+# Telegram
+
+In the following steps you will create a Telegram bot and connect it to the Functions Bot. Then the Functions Bot can be used in Telegram e.g. in group chats to translate your messages for other users.
+
+1. Install the Telegram app for your device. Got to https://telegram.org/apps and select the preferred download link. To create an account, you need a valid phone number.
+
+1. Create a new telegram bot using [@BotFather](https://t.me/botfather). Start a conversation with the bot by following the link https://t.me/botfather or search for `BotFather` in your contacts.
+
+    ![image](./media/telegram-botfather-start.png)
+
+1. After selecting the start button at the bottom of the chat, you will see the list of available commands for [@BotFather](https://t.me/botfather).
+
+    ![image](./media/telegram-botfather-commands.png)
 
 
 ---
