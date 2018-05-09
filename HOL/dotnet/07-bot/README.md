@@ -733,7 +733,7 @@ In the following steps you will create a Telegram bot and connect it to the Func
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram-saved.png)
 
-1. Open Telegram and search for the bot you created in the previous steps. In this example we are searching for the [Microsoft Translator API](https://t.me/texttranslationbot).
+1. Open Telegram and search for the bot you created in the previous steps. In this example we are searching for [Microsoft Translator API aka @TextTranslationBot](https://t.me/texttranslationbot).
 
     ![image](./media/azure-functions-bot/telegram-search-microsoft-translator-api.png)
 
