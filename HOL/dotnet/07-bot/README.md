@@ -725,13 +725,17 @@ In the following steps you will create a Telegram bot and connect it to the Func
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels.png)
 
-1. Enter the token you received when you created the Telegram bot, it has the format `123456789:AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqR`.
+1. Enter the token you received after creating the Telegram bot in the `Access Token` field - the token has the format `123456789:AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqR`.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram.png)
 
 1. Click `Save` to validate and save the token.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram-saved.png)
+
+1. Open Telegram and search for the bot you created in the previous steps. In this example we are searching for the [Microsoft Translator API](https://t.me/texttranslationbot).
+
+    ![image](./media/azure-functions-bot/telegram-search-microsoft-translator-api.png)
 
 ---
 ## Summary
