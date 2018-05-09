@@ -701,7 +701,7 @@ You have now seen an alternative way to create and debug a bot using the Azure B
     ![image](./media/azure-functions-bot/azure-portal-cognitive-services-keys.png)
 
 
-### 1.1. Telegram Bot API
+### Exercise 8: 3. Telegram Bot API
 
 In the following steps you will create a Telegram bot and connect it to the Functions Bot. Then the Functions Bot can be used in Telegram e.g. in group chats to translate your messages for other users.
 
@@ -721,6 +721,17 @@ In the following steps you will create a Telegram bot and connect it to the Func
 
 1. If everything worked well, the bot was successfully created and you will receive a message with a token which is used to access the Telegram Bot API. The token is needed in the following steps.
 
+1. In the following steps you are going to add a new channel to the Functions Bot and connect it to the Telegram Bot from the previous steps. Click on `Bot Services` on the left navigation bar or select `All services`, search for `bot` and click on `Bot Services` in the search results. Select `Channels` from the `Bot Services` menu. Click on the Telegram icon under `More channels` at the bottom of the page.
+
+    ![image](./media/azure-functions-bot/azure-portal-bot-services-channels.png)
+
+1. Enter the token you received when you created the Telegram bot, it has the format `123456789:AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqR`.
+
+    ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram.png)
+
+1. Click `Save` to validate and save the token.
+
+    ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram-saved.png)
 
 ---
 ## Summary
