@@ -701,7 +701,7 @@ You have now seen an alternative way to create and debug a bot using the Azure B
     ![image](./media/azure-functions-bot/azure-portal-cognitive-services-keys.png)
 
 
-# Telegram
+### Telegram
 
 In the following steps you will create a Telegram bot and connect it to the Functions Bot. Then the Functions Bot can be used in Telegram e.g. in group chats to translate your messages for other users.
 
