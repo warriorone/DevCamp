@@ -760,15 +760,15 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-build.png)
 
-1. Click on `messages` below `Function Apps` in the menu.
+1. Select `messages` from the Function Apps menu and click on `View files` right from the code.
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages.png)
 
-1. Click on `View files` on the right side and select `EchoDialog.csx`.
+1. Select `EchoDialog.csx` from the file list.
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages-echodialog.png)
 
-1. Replace the contents of the file EchoDialog.csx with the following code. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key. Go to [Exercise 8: 2. Cognitive Services and the Translator Text API](#ex8-2) 5. for how to find your subscription key.
+1. Replace the contents of the file `EchoDialog.csx` with the following code. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key. Read from mark 5. of [Exercise 8: 2. Cognitive Services and the Translator Text API](#ex8-2) for how to retrieve your subscription key.
 
 	```csharp
 	using System;
