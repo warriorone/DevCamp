@@ -636,6 +636,8 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
 ## Exercise 8: Azure Functions Bot<a name="ex8"></a>
 
+### Exercise 8: 1. Create and test the Functions Bot
+
 1. Click on `Create a resource` in the left navigation bar.
 
     ![image](./media/azure-functions-bot/azure-portal-create-a-resource.png)
@@ -667,6 +669,8 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 1. You can test the bot by selecting `Test in Web Chat` from the `Bot Management` section. Enter something and the bot will welcome you and reply to your message.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-test-in-web-chat.png)
+
+### Exercise 8: 2. Cognitive Services and the Translator Text API
 
 1. Click on `Create a resource` in the left navigation bar.
 
@@ -700,7 +704,6 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-cognitive-services-keys.png)
 
-
 ### Exercise 8: 3. Telegram Bot API
 
 In the following steps you will create a Telegram bot and connect it to the Functions Bot. Then the Functions Bot can be used in Telegram e.g. in group chats to translate your messages for other users.
@@ -711,7 +714,7 @@ In the following steps you will create a Telegram bot and connect it to the Func
 
     ![image](./media/azure-functions-bot/telegram-botfather-start.png)
 
-1. After selecting the start button at the bottom of the chat, you will see the list of available commands for [@BotFather](https://t.me/botfather).
+1. After selecting the start button at the bottom of the chat, you will see a list of available commands for [@BotFather](https://t.me/botfather).
 
     ![image](./media/azure-functions-bot/telegram-botfather-commands.png)
 
@@ -725,7 +728,7 @@ In the following steps you will create a Telegram bot and connect it to the Func
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels.png)
 
-1. Enter the token you received after creating the Telegram bot in the `Access Token` field - the token has the format `123456789:AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqR`.
+1. Enter the token you received after creating the Telegram bot in the `Access Token` field. The token has the format `123456789:AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqR`.
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram.png)
 
@@ -733,9 +736,37 @@ In the following steps you will create a Telegram bot and connect it to the Func
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-channels-telegram-saved.png)
 
-1. Open Telegram and search for the bot you created in the previous steps. In this example we are searching for [Microsoft Translator API aka @TextTranslationBot](https://t.me/texttranslationbot).
+1. Open Telegram and search for the bot you created in the previous steps. In this example we are searching for [Microsoft Translator API](https://t.me/texttranslationbot) or [@TextTranslationBot](https://t.me/texttranslationbot).
 
     ![image](./media/azure-functions-bot/telegram-search-microsoft-translator-api.png)
+
+### Exercise 8: 4. Configure the Functions Bot
+
+In this exercise you will configure the Functions Bot. The goal is to connect it to the Translator Text API and to translate incoming messages to the specified language(s), so foreign language speaking users can read and understand all chat messages.
+
+1. Click on `Bot Services` on the left navigation bar. If `Bot Services` is missing, click on `All services` on the left navigation bar.
+
+    ![image](./media/azure-functions-bot/azure-portal-all-services.png)
+
+1. Search for `bot` and click on `Bot Services`. You can add a shortcut to the left navigation bar by selecting the star icon.
+
+    ![image](./media/azure-functions-bot/azure-portal-all-services-search-bot.png)
+
+1. In `Bot Services`, click on the newly created bot. In this example it is called `TranslatorTextBot`.
+
+    ![image](./media/azure-functions-bot/azure-portal-bot-services.png)
+
+1. Select `Build` from the `Bot Management` section. Click on `Open this bot in Azure Functions` in the blade right from the menu.
+
+    ![image](./media/azure-functions-bot/azure-portal-translatortextbot-build.png)
+
+1. Messages
+
+    ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages.png)
+
+1. EchoDialog
+
+    ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages-echodialog.png)
 
 ---
 ## Summary
