@@ -670,7 +670,7 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
     ![image](./media/azure-functions-bot/azure-portal-bot-services-test-in-web-chat.png)
 
-### Exercise 8: 2. Cognitive Services and the Translator Text API
+### Exercise 8: 2. Cognitive Services and the Translator Text API<a name="ex8-2"></a>
 
 1. Click on `Create a resource` in the left navigation bar.
 
@@ -768,7 +768,7 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages-echodialog.png)
 
-1. Replace the contents of the file EchoDialog.csx with the following code. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key.
+1. Replace the contents of the file EchoDialog.csx with the following code. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key. Go to [Exercise 8: 2. Cognitive Services and the Translator Text API](#ex8-2) 5. for how to find your subscription key.
 
 	```csharp
 	using System;
