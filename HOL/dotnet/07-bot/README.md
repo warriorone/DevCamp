@@ -969,7 +969,6 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
 					HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
 					string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
-					//string result = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody));
 
 					IList<TranslateResult> translateResults = JsonConvert.DeserializeObject<IList<TranslateResult>>(responseBody);
 
