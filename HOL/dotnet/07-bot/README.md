@@ -768,7 +768,7 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages-echodialog.png)
 
-1. Replace the contents of the file `EchoDialog.csx` with the following code. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key. Read from mark 5. of [Exercise 8: 2. Cognitive Services and the Translator Text API](#ex8-2) for how to retrieve your subscription key.
+1. Replace the contents of the file `EchoDialog.csx` with the following code and click on `Save and run`. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key. Read from mark 5. of [Exercise 8: 2. Cognitive Services and the Translator Text API](#ex8-2) for how to retrieve your subscription key.
 
 	```csharp
 	using System;
@@ -987,6 +987,10 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 		}
 	}
 	```
+
+1. Go back to the Web Chat to test the new code. Enter something to start the conversation with the bot. The bot will send you a welcome message which includes some commands you can use to configure the translation.
+
+	![image](./media/azure-functions-bot/azure-portal-translatortextbot-test-in-web-chat.png)
 
 ---
 ## Summary
