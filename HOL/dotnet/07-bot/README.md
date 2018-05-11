@@ -760,13 +760,233 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-build.png)
 
-1. Messages
+1. Click on `messages` below `Function Apps` in the menu.
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages.png)
 
-1. EchoDialog
+1. Click on `View files` on the right side and select `EchoDialog.csx`.
 
     ![image](./media/azure-functions-bot/azure-portal-translatortextbot-messages-echodialog.png)
+
+1. Replace the contents of the file EchoDialog.csx with the following code. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key.
+
+	```csharp
+	using System;
+	using System.IO;
+	using System.Net;
+	using System.Net.Http;
+	using System.Runtime.Serialization;
+	using System.Threading.Tasks;
+	using System.Text;
+	using System.Web;
+	using Microsoft.Bot.Builder.Dialogs;
+	using Microsoft.Bot.Connector;
+	using Newtonsoft.Json;
+
+	public enum Language
+	{
+		Chinese,   // zh
+		Croatian,  // hr
+		English,   // en
+		French,    // fr
+		German,    // de
+		Russian,   // ru
+		Vietnamese // vi
+	}
+
+	public class DetectedLanguage
+	{
+		public string Language { get; set; }
+		public double Score { get; set; }
+	}
+
+	public class Translation
+	{
+		public string Text { get; set; }
+		public string To { get; set; }
+	}
+
+	public class TranslateResult
+	{
+		public DetectedLanguage DetectedLanguage { get; set; }
+		public IList<Translation> Translations { get; set; }
+	}
+
+	// For more information about this template visit http://aka.ms/azurebots-csharp-basic
+	[Serializable]
+	public class EchoDialog : IDialog<object>
+	{
+		public static IList<Language> _languages = new List<Language>();
+
+		public Task StartAsync(IDialogContext context)
+		{
+			try
+			{
+				context.Wait(MessageReceivedAsync);
+			}
+			catch (OperationCanceledException error)
+			{
+				return Task.FromCanceled(error.CancellationToken);
+			}
+			catch (Exception error)
+			{
+				return Task.FromException(error);
+			}
+
+			return Task.CompletedTask;
+		}
+
+		public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
+		{
+			var message = await argument;
+			if (message.Text == "/add") 
+			{
+				PromptDialog.Choice(
+					context: context,
+					resume: ResumeAddLanguage,
+					options: (IEnumerable<Language>)Enum.GetValues(typeof(Language)),
+					prompt: "I will translate all your messages for you. Select a language to add it to the list of languages.",
+					retry: "I didn't understand. Please try again.");
+			}
+			else if (message.Text == "/reset")
+			{
+				_languages.Clear();
+
+				await context.PostAsync("All languages have been deleted. Enter /language to add a new language.");
+			}
+			else if (message.Text == "/show")
+			{
+				string languages = string.Empty;
+
+				foreach (Language language in _languages)
+				{
+					if (languages != string.Empty)
+					{
+						languages += ", ";
+					}
+					languages += language.ToString();
+				}
+
+				await context.PostAsync("You have selected the following languages: " + languages);
+			}
+			else
+			{
+				var text = string.Empty;
+				if (!string.IsNullOrEmpty(message.From.Name))
+				{
+					text += $"{message.From.Name}:\r\n";
+				}
+
+				IList<string> toLocales = new List<string>();
+
+				foreach (Language language in _languages)
+				{
+					if (language == Language.Chinese)
+					{
+						toLocales.Add("zh");
+					}
+					else if (language == Language.Croatian)
+					{
+						toLocales.Add("hr");
+					}
+					else if (language == Language.English)
+					{
+						toLocales.Add("en");
+					}
+					else if (language == Language.German)
+					{
+						toLocales.Add("de");
+					}
+					else if (language == Language.French)
+					{
+						toLocales.Add("fr");
+					}
+					else if (language == Language.Russian)
+					{
+						toLocales.Add("ru");
+					}
+					else if (language == Language.Vietnamese)
+					{
+						toLocales.Add("vi");
+					}
+				}
+
+				text += await Translate(message.Text, toLocales);
+
+				await context.PostAsync(text);
+
+				context.Wait(MessageReceivedAsync);
+			}
+		}
+
+		public async Task ResumeAddLanguage(IDialogContext context, IAwaitable<Language> result)
+		{
+			Language newLanguage = await result;
+
+			if (!_languages.Contains(newLanguage))
+			{
+				_languages.Add(newLanguage);
+			}
+
+			string message = string.Empty;
+
+			foreach (Language language in _languages)
+			{
+				if (message != string.Empty)
+				{
+					message += ", ";
+				}
+				message += language.ToString();
+			}
+
+			await context.PostAsync("Thanks. Your messages will be translated to: " + message);
+		}
+
+		public async Task<string> Translate(string text, IList<string> toLocales)
+		{
+			if (toLocales.Count == 0)
+			{
+				return string.Empty;
+			}
+
+			string url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
+			foreach (string toLocale in toLocales)
+			{
+				url += "&to=" + toLocale;
+			}
+
+			System.Object[] body = new System.Object[] { new { Text = text } };
+			string requestBody = JsonConvert.SerializeObject(body);
+
+			using (HttpClient httpClient = new HttpClient())
+			{
+				using (HttpRequestMessage httpRequestMessage = new HttpRequestMessage())
+				{
+					httpRequestMessage.Method = HttpMethod.Post;
+					httpRequestMessage.RequestUri = new Uri(url);
+					httpRequestMessage.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+					httpRequestMessage.Headers.Add("Ocp-Apim-Subscription-Key", "YOUR_SUBSCRIPTION_KEY");
+
+					HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+					string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
+					//string result = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody));
+
+					IList<TranslateResult> translateResults = JsonConvert.DeserializeObject<IList<TranslateResult>>(responseBody);
+
+					string result = string.Empty;
+					foreach (var translateResult in translateResults)
+					{
+						foreach (Translation translation in translateResult.Translations)
+						{
+							result += translation.Text + "\r\n\r\n";
+						}
+					}
+					return result;
+				}
+			}
+		}
+	}
+	```
 
 ---
 ## Summary
