@@ -194,6 +194,8 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/2017-06-16_12_14_00.png)
 
+> ***If you do not see `REST API Client` but `Azure API` please use the `end` folder for this HOL which has the REST API already configured.*** 
+
 1. In the Swagger URL field paste the value for the `INCIDENT_API_URL`, appending `/swagger/docs/v1` to the end of the URL.
 
 1. For the Client Namespace, enter `IncidentAPI` and click `OK`. 
