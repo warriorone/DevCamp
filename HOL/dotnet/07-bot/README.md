@@ -1007,7 +1007,7 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
 1. Enter a message in the group chat. The message will be translated to the selected language.
 
-	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add-test.png)
+	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-test.png)
 
 ---
 ## Summary
