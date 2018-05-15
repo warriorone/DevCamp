@@ -636,6 +636,8 @@ You have now seen an alternative way to create and debug a bot using the Azure B
 
 ## Exercise 8: Azure Functions Bot<a name="ex8"></a>
 
+Instead of using an Azure App, we will deploy the bot to an Azure Functions App. The bot will use the Translator Text API of Cognitive Services to translate chat messages. We will then integrate the bot with Telegram to be able to use it in group chats, so foreign language speakers will be able to understand your messages, even without knowing your language.
+
 ### Exercise 8: 1. Create and test the Functions Bot
 
 1. Click on `Create a resource` in the left navigation bar.
@@ -852,7 +854,7 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 			{
 				_languages.Clear();
 
-				await context.PostAsync("All languages have been deleted. Enter /language to add a new language.");
+				await context.PostAsync("All languages have been deleted. Enter /add to add a new language.");
 			}
 			else if (message.Text == "/show")
 			{
@@ -987,9 +989,25 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 	}
 	```
 
-1. Go back to the Web Chat to test the new code. Enter something to start the conversation with the bot. The bot will send you a welcome message which includes some commands you can use to configure the translation.
+1. Go back to the Web Chat to test the new code. Enter something to start the conversation with the bot. The bot will send you a welcome message which includes some commands you can use to configure the translation. Enter `/add` and select the language to which your messages should be translated. Repeat it if you want your messages to be translate to more than one language.
 
 	![image](./media/azure-functions-bot/azure-portal-translatortextbot-test-in-web-chat.png)
+
+1. Open Telegram messenger and start a group chat. Add your bot to your chat by selecting `Add Members` and enter the name of your bot. In this example we add the `Microsoft Translator API` bot.
+
+	![image](./media/azure-functions-bot/telegram-add-members-microsoft-translator-api.png)
+
+1. Enter `/add` and select the language to which your messages should be translated.
+
+	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add.png)
+
+1. After selecting the language the bot shows the language which was selected.
+
+	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add-thanks.png)
+
+1. Enter a message in the group chat. The message will be translated to the selected language.
+
+	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add-test.png)
 
 ---
 ## Summary
