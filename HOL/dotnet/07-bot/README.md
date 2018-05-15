@@ -1016,8 +1016,8 @@ In this hands-on lab, you learned how to:
 * Set up the developing environment to support the creation of bot applications.
 * Create your own bot from scratch.
 * Create your own bot using Azure Bot Service.
-* Call Azure Cognitive Services to leverage computer vision API.
-* Hosting your bot in Azure.
+* Call Azure Cognitive Services to leverage Computer Vision API and Translator Text API.
+* Hosting your bot in Azure and Azure Functions.
 
 After completing this module, you can continue on to Module 9: IoT.
 
