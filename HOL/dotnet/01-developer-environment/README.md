@@ -106,20 +106,6 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     Enter your email name followed by `-proge` and click `Continue`.
 
-1. On the My Benefits screen, click `Use your benefits` under the heading **Visual Studio Dev Essentials**.
-
-    ![image](./media/2016-10-18_17-30-18.gif)
-
-1. Click the `Accept` button to access your Visual Studio Dev Essentials benefits.
-
-    ![image](./media/2016-10-18_17-42-01.gif)
-
-    Click `Confirm` in the modal dialogue.
-
-    ![image](./media/2017-06-15_10_47_00.png)
-
-You have now activated a Visual Studio Team Services Trial Subscription, which will be used in a future lab.
-
 ---
 ## Exercise 4: Configure your Azure subscription for DevCamp<a name="ex4"></a>
 
