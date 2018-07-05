@@ -21,7 +21,6 @@ The credit card ***will not*** be charged unless you remove the spending limit o
 ## Exercises
 This hands-on-lab has the following exercises:
 * [Exercise 1: Set up Office 365 trial subscription](#ex1)
-* [Exercise 2: Set up Azure trial subscription](#ex2)
 * [Exercise 3: Start your VSTS trial subscription](#ex3)
 * [Exercise 4: Configure your Azure subscription for DevCamp](#ex4)
 * [Exercise 5: Use an Azure Virtual Machine for remote development](#ex5)
@@ -89,15 +88,23 @@ Stay on this page until the next exercise.
 
 In a future lab we will use [Visual Studio Team Services](https://www.visualstudio.com/team-services/), or "VSTS" for short. In this exercise we will enable a free trial subscription.
 
-1. In your browser, go to [www.visualstudio.com/team-services](http://www.visualstudio.com/team-services) and click on `Sign in` in the upper right corner.  
+1. In your browser, go to [www.visualstudio.com/team-services](http://www.visualstudio.com/team-services) and click on `Free Account` in the upper right corner.  
 
-    ![image](./media/2017-03-14_09_21_21.png)
+    ![image](./media/2018-07-05_15_36_42.png)
 
-    Complete the sign in process if needed, and you should be taken to a screen that looks like this:
+    Complete the sign in process if needed using your Proge-Software account:
+    
+    ![image](./media/2018-07-05_15_37_19.png)
 
-    ![image](./media/2017-03-14_09_25_15.png)
+    You should be taken to a screen that looks like this:
 
-    Add your name and email address (if not already populated) and click `Continue`.
+    ![image](./media/2018-07-05_15_38_22.png)
+    
+    Click on `Create new account` to set your VSTS account. Please note that sometimes you may be taken to the following screen directly:
+
+    ![image](./media/2018-07-05_15_39_08.png)
+
+    Enter your email name followed by `-proge` and click `Continue`.
 
 1. On the My Benefits screen, click `Use your benefits` under the heading **Visual Studio Dev Essentials**.
 
