@@ -111,9 +111,9 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. You should see a new tab open in your browser and open the Azure portal, with a blade that looks like this:
 
-    ![image](./media/2017-06-15_10_51_00.png)
+    ![image](./media/2018-07-07_15_54_39.png)
 
-1.  Select as subscription, `Use existing` resource group named `Corso-MS-Cloud`, and select `West Europe` as location for your deployment. 
+1.  Select as subscription, choose `Use existing` resource group and select `Corso-MS-Cloud`from the list. 
 
 1.  Enter your Proge-Software account name as `User Name` (i.e. the part before `@progesoftware.it` in your email address).
 
@@ -143,7 +143,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. Then click on your Resource group to open it:
 
-    ![image](./media/2016-10-18_13-39-10.gif)
+    ![image](./media/2018-07-07_08_25_59.gif)
 
 ---
 ## Exercise 5: Use an Azure Virtual Machine for remote development<a name="ex5"></a>
@@ -152,7 +152,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. In the `Corso-MS-Cloud` resource group, select the DevCamp DevTest Lab.
 
-    ![image](./media/2018-07-07_08_25_59.png)
+    ![image](./media/image-007.png)
 
 1. Find the Windows virtual machine in your DevTest lab. The name will start with your account name:
 
@@ -255,8 +255,8 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2018-07-07_08_58_27.png)
 
-Locate the app service named `incidentapi...` in the resource group blade:
-    
+1. Locate the app service named `incidentapi...` in the resource group blade:    
+
     ![image](./media/2018-07-07_08_59_43.png)
 
 1. Click on the app service, which will bring up the app service blade. Click on `Browse` at the top:
