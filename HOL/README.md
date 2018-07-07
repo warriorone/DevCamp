@@ -10,8 +10,8 @@ Setting up your developer environment for your specific language.
 In this lab you will create the environment that is needed for your language preference.
 
 * Create O365 Developer Tenant
-* Connect an Azure subscription (Trial or other)
-* Take prepared image, walk through the tools that are available for your platform (.NET, Node.JS, Java | Windows, MacOSX)
+* Connect an Azure subscription
+* Take prepared image, walk through the tools that are available for your platform (.NET | Windows)
 * Run a custom ARM Template to scaffold out resources used during the training
 
 ### View instructions for [.NET](../HOL/dotnet/01-developer-environment)

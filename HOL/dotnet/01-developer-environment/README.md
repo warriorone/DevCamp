@@ -1,12 +1,11 @@
 # Developer Environment (.NET)
 
 ## Overview
-In this lab, you will set up an Office365 trial subscription, an Azure trial subscription, configure your Azure subscription for the DevCamp, and provision a virtual machine in the subscription to use for development of further labs.
+In this lab, you will set up an Office365 trial subscription, configure your Azure subscription for the DevCamp, and provision a virtual machine in the subscription to use for development of further labs.
 
 ## Objectives
-In this hands-on lab, you will set up an Office365 developer subscription, and Azure trial subscription, and an Azure-based virtual machine for the development environment for subsequent labs in the DevCamp.  To expedite the process, we've prepared a Windows image that you will copy into your own environment, start the virtual machine and connect to it.  You will then configure the components for Azure development.
+In this hands-on lab, you will set up an Office365 developer subscription, and an Azure-based virtual machine for the development environment for subsequent labs in the DevCamp.  To expedite the process, we've prepared a Windows image that you will copy into your own environment, start the virtual machine and connect to it.  You will then configure the components for Azure development.
 * Set up an Office365 trial subscription.
-* Set up an Azure trial subscription.
 * Configure your Azure subscription for DevCamp.
 * Create an Azure Virtual Machine for remote development.
 * Connect to the Azure Virtual Machine and configure it for development.
@@ -14,9 +13,7 @@ In this hands-on lab, you will set up an Office365 developer subscription, and A
 
 ## Prerequisites
 
-You will need a cell phone and credit card for identity verification.
-
-The credit card ***will not*** be charged unless you remove the spending limit on the subscription you will create.
+None.
 
 ## Exercises
 This hands-on-lab has the following exercises:
@@ -45,7 +42,6 @@ This hands-on-lab has the following exercises:
 
 ---
 ## Exercise 1: Set up Office 365 trial subscription<a name="ex1"></a>
-
 
 1. In your browser, go to [products.office.com/en-us/business/office-365-enterprise-e3-business-software](https://products.office.com/en-us/business/office-365-enterprise-e3-business-software) and click the link that says `Free Trial`. 
 
@@ -109,24 +105,17 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 ---
 ## Exercise 4: Configure your Azure subscription for DevCamp<a name="ex4"></a>
 
-1. We have created an Azure Resource Group template that will configure the resources you need in Azure for the DevCamp. To deploy these resources in your Azure subscription, `control + click` on the blue ***Deploy to Azure*** button below (on a MAC, use `Apple Key + click`):
+1. We have created an Azure Resource Group template that will configure the resources you need in Azure for the DevCamp. To deploy these resources in your Azure subscription, `control + click` on the blue ***Deploy to Azure*** button below:
 
-    **Full deployment:** :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
-
-    **Alternative without artifacts:** :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzureCAT-GSI%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeployAlt.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
-    > If you are using the alternative deployment you have to manually install:
-    > [Chrome](https://www.google.com/chrome/),
-    > [git](https://git-scm.com/download/win),
-    > [VS Code](https://code.visualstudio.com/docs/?dv=win)
-    > and execute `\DevCamp\Shared\ARMTemplate\Scripts\InstallNodeJS.ps1` in a PowerShell to install Chocolatey and NodeJS.>
+    :point_right:    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAkelitz%2FDevCamp%2Fmaster%2FShared%2FARMTemplate%2FAzureDeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>    :point_left:
 
 1. You should see a new tab open in your browser and open the Azure portal, with a blade that looks like this:
 
     ![image](./media/2017-06-15_10_51_00.png)
 
-1.  Name your resource group `DevCamp`, and choose a location for your deployment. 
+1.  Select as subscription, `Use existing` resource group named `Corso-MS-Cloud`, and select `West Europe` as location for your deployment. 
 
-    > Please **do not** choose the region West India for your deployment. It is missing a resource that is needed for the labs!
+1.  Enter your Proge-Software account name as `User Name` (i.e. the part before `@progesoftware.it` in your email address).
 
 1. Check the box that indicates you agree to the terms and conditions, and click the `Purchase` button.
 
@@ -142,9 +131,9 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     In a later session, we will take a look at Azure Resource Group templates, and how to manage your infrastructure the same way you manage your code. As a short introduction, a template is a JSON file that contains definitions for the resources you want in your resource group. When you apply the resource group template, Azure will apply the template to your Azure resource group, and create the resources you have specified in the template. This makes it easy to maintain the infrastructure definition in the JSON text file.
     
-    In the resource group template we have created for DevCamp, there are several types of resources including Web Apps and a Virtual Machine. Resource Group Templates are usually fairly quick to apply - the reason this one takes so long is that we are creating a Windows Virtual machine and installing all the tools you will need for the DevCamp including Visual Studio, the Java development kit, and other software resources.
+    In the resource group template we have created for DevCamp, there are several types of resources including Web Apps and a Virtual Machine. Resource Group Templates are usually fairly quick to apply - the reason this one takes so long is that we are creating a Windows Virtual machine and installing all the tools you will need for the DevCamp including Visual Studio, and other software resources.
 
-1. You will know when the Resource Group finishes provisioning either by the Notification drop-down, or by navigation on the left-hand bar to `Resource Groups` -> `DevCamp` and check the `Deployments` status for `Succeeded`.
+1. You will know when the Resource Group finishes provisioning either by the Notification drop-down, or by navigation on the left-hand bar to `Resource Groups` -> `Corso-MS-Cloud` and check the `Deployments` status for `Succeeded`.
 
     ![image](./media/2017-06-15_11_41_00.png)
 
@@ -161,15 +150,17 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. The Azure resource group template will have created a virtual machine that can be used for remote development on Windows. Exercise 5 describes the configuration for the Windows virtual machine, which would be appropriate for any of the languages.
 
-1. In the DevCamp resource group, select the DevCamp DevTest Lab.
+1. In the `Corso-MS-Cloud` resource group, select the DevCamp DevTest Lab.
 
-    ![image](./media/image-007.gif)
+    ![image](./media/2018-07-07_08_25_59.png)
 
-1. Find the Windows virtual machine in your DevTest lab. The name will start with the prefix `windev`:
+1. Find the Windows virtual machine in your DevTest lab. The name will start with your account name:
 
     ![image](./media/2017-06-15_11_47_00.png)
 
-1. Select the machine name and open the virtual machine blade  then click `Connect` to connect to the machine using Remote Desktop:
+1. In Azure you can automatically shutdown virtual machines e.g. during the night to save costs. This is the case for the machines in our Labs as you can see from the `Auto-Shutdown` flag.
+
+1. Select the machine name and open the virtual machine blade then click `Connect` to connect to the machine using Remote Desktop. If you are not running this course in a single day, you will find the machine stopped we you come back the day after. Click `Start` to re-start the machine before to connect:
 
     ![image](./media/2017-06-15_11_52_00.png)
 
@@ -195,7 +186,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2016-10-18_16-46-33.gif)
 
-1. Then click the `On` next to **IE Enhanced Security Configuration**.
+1. Then click the `On` next to **IE Enhanced Security Configuration** (if the flag is already `off` you can skip this point).
 
     ![image](./media/2016-10-18_16-50-50.gif)
 
@@ -219,7 +210,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2017-06-15_16_55_00.png)
 
-1. On the sign in screen, click `sign in`. Use the credentials you used earlier for your Office 365 trial subscription.
+1. On the sign in screen, click `sign in`. Use your Proge-Software Office 365 credentials.
 
     > Depending on the version of the Windows image and Visual Studio, your start experience may vary:
 
@@ -260,9 +251,13 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. The API application has been prepared for you to be available as a communication partner during different exercises and just needs to be deployed once. It will be first used in the second hands on lab.
 
-1. Open a browser and navigate to [https://portal.azure.com](https://portal.azure.com). Locate the app service named `incidentapi...` in the resource group blade:
+1. Open a browser and navigate to [https://portal.azure.com](https://portal.azure.com). Open the resource group `Corso-MS-Cloud` and filter resources by your account name:
+
+    ![image](./media/2018-07-07_08_58_27.png)
+
+Locate the app service named `incidentapi...` in the resource group blade:
     
-    ![image](./media/2017-06-15_13_05_00.png)
+    ![image](./media/2018-07-07_08_59_43.png)
 
 1. Click on the app service, which will bring up the app service blade. Click on `Browse` at the top:
 
@@ -303,7 +298,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 ---
 ## Exercise 7: Azure Portal walk-through<a name="ex7"></a>
 
-1. On your local machine or the virtual machine in Azure, open a browser window and go to the main Azure portal page, [http://portal.azure.com](https://portal.azure.com). Log in with the credentials you supplied in the subscription sign-up exercise. You should see the Azure portal, similar to this:
+1. On your local machine or the virtual machine in Azure, open a browser window and go to the main Azure portal page, [http://portal.azure.com](https://portal.azure.com). Log in with your Proge credentials if needed. You should see the Azure portal, similar to this:
 
     ![image](./media/2017-06-15_16_21_00.png)
 
@@ -373,7 +368,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. Click on the resource group that you created:
 
-    ![image](./media/2017-06-16_08_38_00.png)
+    ![image](./media/2018-07-07_15_34_33.png)
 
     A new blade will open with the overview of all of the contents of the resource group listed:
 
@@ -396,18 +391,14 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
  1. Select `Auto-shutdown`.
 
     ![image](./media/2017-10-30_12_21_00.png)
-    
-1. Modify the Auto-shutdown schedule based on your time zone.
 
-    ![image](./media/2017-06-16_09_08_00.png)
+    &#x1F53A;Do NOT modify the Auto-shutdown settings&#x1F53A;.
 
 1. The machine does not automatically turn on. To enable this, in the Policy Settings blade, select `Auto-Start`.
 
     ![image](./media/2017-06-16_09_14_00.png)
 
-1. Change the schedule based on your time zone.
-
-    ![image](./media/2017-06-16_09_14_30.png)
+    &#x1F53A;Do NOT modify the Auto-start settings&#x1F53A;.
 
 > It is particularly useful to create resources in the Azure portal, then save or edit the resource group template.
 > Resource group templates will be explained further in a later lab.
@@ -415,11 +406,11 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 ---
 ## Exercise 8: View the resources you created<a name="ex8"></a>
 
-Going back to the list of resources in the resource group `DevCamp`, we'll go through the list of each resource, with a description.  Feel free to click on the resource and view its detail blade.
+Going back to the list of resources in the resource group `Corso-MS-Cloud`, we'll go through the list of each resource, with a description.  Feel free to click on the resource and view its detail blade.
 
 ![image](./media/2017-06-16_09_18_00.png)
 
-Also, our resource group template has added a random string to the end of many of the resources.  In this description, we have replaced that string with `...`:
+Also, our resource group template has added a random string to the end of many of the resources right after your account name.  In this description, we have replaced that string and your account name with `...`:
 
 * `adevcamp...` - Storage account for storing artifacts for the DevTest labs.
 
@@ -443,15 +434,11 @@ Also, our resource group template has added a random string to the end of many o
 
 * `incidentdiagstg...` - Storage account for storing diagnostics from the services in the resource group.
 
-* `javaapp...` - App service for running the Java application when deployed to the cloud.  If you are not using Java in the labs, you can safely delete this.
-
-* `nodejsapp...` - App service for running the Node.js application when deployed to the cloud.  If you are not using Node.js in the labs, you can safely delete this.
-
-In the second resource group `DevCamp-WinDev-...`, additional resources were created.
+In the second resource group `DevCamp-...`, additional resources were created.
 
    ![image](./media/2017-06-16_09_55_00.png)
 
-They are all called `WinDev-...` but are of different types:
+They are all called with your account name and a random string but are of different types:
 
 * `Public IP address` - This is a public IP that will allow the Windows development virtual machine to communicate with the Internet (e.g. via Remote Desktop).  If you delete the Windows virtual machine, you can safely delete this.
 
@@ -462,28 +449,10 @@ They are all called `WinDev-...` but are of different types:
 * `Disk` - Storage account for storing for VHDs for the machines DevTest labs.
 
 ---
-## Clean Up
-
-**&#x1F53A; Please refer back to this section after the DevCamp concludes! This is instructional only! Do NOT clean up until the DevCamp is done! &#x1F53A;**
-
-To clean up a Resource Group, we typically simply delete the Resource Group. However, since we are using an Azure DevTest Lab to manage our Virtual Machine, we have an additional step.
-
-Azure DevTest Labs create a series of [Resource Locks](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources) that prevent accidental deletion of resources. Locks allow us to safeguard against accidental deletion of critical resources, and to delete the Resource Group we first need to delete the locks.
-
-Open your DevCamp Resource Group, and in the navigation pane select **Locks**. You should see the 3 locks created by the DevTest Lab. To delete, select the three dots to the right of the Notes column, and select **Delete**.
-
-![image](./media/2017-06-16_10_13_00.png)
-
-After all 3 locks have been deleted you are able to delete the resource group. Navigate to the **Overview** tab and select **Delete**. The Resource Group will take several minutes to remove, but when finished all resources will no longer accrue charges in your subscription.
-
-![image](./media/2017-06-16_10_25_00.png)
-
----
 ## Summary
 
 In this hands-on lab, you learned how to:
 * Set up an Office365 developer subscription.
-* Set up an Azure trial subscription allowing you to complete this course free of charge.
 * Configure your Azure subscription for DevCamp.
 * Create an Azure Virtual Machine for development where you can carry out the following hands on labs.
 * Connect to the Azure Virtual Machine and configure it for development.
