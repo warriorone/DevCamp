@@ -143,7 +143,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. Then click on your Resource group to open it:
 
-    ![image](./media/2018-07-07_08_25_59.gif)
+    ![image](./media/2018-07-07_08_25_59.png)
 
 ---
 ## Exercise 5: Use an Azure Virtual Machine for remote development<a name="ex5"></a>
@@ -152,7 +152,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
 1. In the `Corso-MS-Cloud` resource group, select the DevCamp DevTest Lab.
 
-    ![image](./media/image-007.png)
+    ![image](./media/image-007.gif)
 
 1. Find the Windows virtual machine in your DevTest lab. The name will start with your account name:
 
