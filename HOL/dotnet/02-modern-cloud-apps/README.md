@@ -4,7 +4,7 @@
 
 City Power & Light is a sample application that allows citizens to report "incidents" that have occurred in their community. It includes a landing screen, a dashboard, and a form for reporting new incidents with an optional photo. The application is implemented with several components:
 
-* Front end web application contains the user interface and business logic. This component has been implemented three times in .NET, NodeJS, and Java.
+* Front end web application contains the user interface and business logic. This component has been implemented in .NET.
 * WebAPI is shared across the front ends and exposes the backend CosmosDB.
 * CosmosDB is used as the data persistence layer.
 
@@ -100,17 +100,15 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/2017-06-16_11_39_00.png)
 
-    Select the CosmosDB database. This will open the CosmosDB blade. Scroll to the Collections section.
+    Select the CosmosDB database. This will open the CosmosDB blade.
 
-    In the Collections section, select `Document Explorer`.
+    Select `Data Explorer`.
     
-    ![image](./media/2017-06-16_11_42_00.png)
+    ![image](./media/2018-07-07_19_40_42.png)
 
-    The Document Explorer is an easy way to view the documents inside of a collection via the browser. Select the first record to see the JSON body of the document.
+    The Data Explorer is an easy way to view the documents inside of a collection via the browser. Select the collection with your name, then select `Documents`, finally select the first record to see the JSON body of the document.
 
-    ![image](./media/2017-06-16_11_44_00.png)
-
-    ![image](./media/2017-06-16_11_45_00.png)
+    ![image](./media/2018-07-07_19_43_32.png)
 
     We can see that several incidents have been created and are now available to the API.
 
