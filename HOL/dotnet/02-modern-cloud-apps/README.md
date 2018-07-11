@@ -68,7 +68,7 @@ This hands-on-lab has the following exercises:
 
 1. Close the browser, which will also stop the debugging process.
 
-1. In the [Azure Portal](https://portal.azure.com) navigate to the resource group `DevCamp` that you created with the original ARM template. Resource groups can be found on the left hand toolbar.
+1. In the [Azure Portal](https://portal.azure.com) navigate to the resource group `Corso-MS-Cloud` that you created with the original ARM template. Resource groups can be found on the left hand toolbar.
 
     Select the API app that begins with the name `incidentapi` followed by a random string of characters.
 
@@ -238,7 +238,7 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/2017-06-16_12_19_00.png)
 
-1. In the `Settings.cs` file, paste the following inside the body of the `Settings` class definition:
+1. In the `Settings.cs` file, paste the following inside the body of the `Settings` class definition. Remember to update `[YOUR_ACCOUNT_NAME_HERE]` with your account name (e.g. `gdinardo`):
 
     ```csharp
     //####    HOL 2    ######
@@ -248,7 +248,7 @@ This hands-on-lab has the following exercises:
     public static string AZURE_STORAGE_BLOB_CONTAINER = ConfigurationManager.AppSettings["AZURE_STORAGE_BLOB_CONTAINER"];
     public static string AZURE_STORAGE_QUEUE = ConfigurationManager.AppSettings["AZURE_STORAGE_QUEUE"];
     public static string AZURE_STORAGE_CONNECTIONSTRING = String.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", AZURE_STORAGE_ACCOUNT, AZURE_STORAGE_KEY);
-    public static string REDISCCACHE_KEY_INCIDENTDATA = "incidentdata";
+    public static string REDISCCACHE_KEY_INCIDENTDATA = "incidentdata[YOUR_ACCOUNT_NAME_HERE]";
 
     public static string REDISCACHE_HOSTNAME = ConfigurationManager.AppSettings["REDISCACHE_HOSTNAME"];
     public static string REDISCACHE_PORT = ConfigurationManager.AppSettings["REDISCACHE_PORT"];
@@ -493,7 +493,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
 
 1. Confirm the changes and accept the license to complete the install.
 
-1. Now, let's add our Redis information to local environment variables. In the [Azure Portal](https://portal.azure.com) navigate to the resource group `DevCamp` and select the Redis Cache instance named `incidentcache...`:
+1. Now, let's add our Redis information to local environment variables. In the [Azure Portal](https://portal.azure.com) navigate to the resource group `Corso-MS-Cloud` and select the Redis Cache instance named `incidentcache...`:
 
     ![image](./media/2017-06-16_13_14_00.png)
 
@@ -509,7 +509,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
 
     ![image](./media/2017-06-16_13_29_00.png)
 
-1. Navigate to the `dotnetapp...` web application in your `DevCamp` resource group:
+1. Navigate to the `dotnetapp[YOUR_ACCOUNT_NAME]...` web application in your `Corso-MS-Cloud` resource group:
 
     ![image](./media/2017-06-16_13_49_00.png)
 
@@ -665,7 +665,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
 
 When a new incident is reported, the user can attach a photo.  In this exercise we will process that image and upload it into an Azure Blob Storage Container.
 
-1. To get the necessary values, open the [Azure Portal](https://portal.azrue.com) and open the resource group `DevCamp`.  Select the Storage Account beginning with `incidentblobstg`.
+1. To get the necessary values, open the [Azure Portal](https://portal.azrue.com) and open the resource group `Corso-MS-Cloud`.  Select the Storage Account beginning with `incidentblobstg`.
 
     > The other storage accounts are used for diagnostics data and virtual machine disks
 
