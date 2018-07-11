@@ -1,10 +1,13 @@
 # Developer Environment (.NET)
 
 ## Overview
+
 In this lab, you will set up an Office365 trial subscription, configure your Azure subscription for the DevCamp, and provision a virtual machine in the subscription to use for development of further labs.
 
 ## Objectives
+
 In this hands-on lab, you will set up an Office365 developer subscription, and an Azure-based virtual machine for the development environment for subsequent labs in the DevCamp.  To expedite the process, we've prepared a Windows image that you will copy into your own environment, start the virtual machine and connect to it.  You will then configure the components for Azure development.
+
 * Set up an Office365 trial subscription.
 * Configure your Azure subscription for DevCamp.
 * Create an Azure Virtual Machine for remote development.
@@ -16,71 +19,19 @@ In this hands-on lab, you will set up an Office365 developer subscription, and a
 None.
 
 ## Exercises
+
 This hands-on-lab has the following exercises:
-* [Exercise 1: Set up Office 365 trial subscription](#ex1)
-* [Exercise 3: Start your VSTS trial subscription](#ex3)
-* [Exercise 4: Configure your Azure subscription for DevCamp](#ex4)
-* [Exercise 5: Use an Azure Virtual Machine for remote development](#ex5)
-* [Exercise 6: Deploy Shared API application](#ex6)
-* [Exercise 7: Azure Portal walk-through](#ex7)
-* [Exercise 8: View the resources you created](#ex8)
+
+* [Exercise 1: Start your VSTS trial subscription](#ex1)
+* [Exercise 2: Configure your Azure subscription for DevCamp](#ex2)
+* [Exercise 3: Use an Azure Virtual Machine for remote development](#ex3)
+* [Exercise 4: Deploy Shared API application](#ex4)
+* [Exercise 5: Azure Portal walk-through](#ex5)
+* [Exercise 6: View the resources you created](#ex6)
 
 ---
 
-## Before you start
-
-> &#x1F53A;If you already have an Office 365 subscription, please **use an alternate browser or use private mode!** This will help avoid any issues with conflicting accounts.
->
-> Clear your browsers cache and restart your browser.
->
-> **Do not skip exercise 1!** Even if you already have an Office 365 subscription and address, follow exercise 1 and create a new account.
->
-> Use the account created in exercise 1 for **all the following exercises and hands-on labs!**
->
-> To register for a free trial use an e-mail address and a phone number that has **not been used for a free trial** yet!&#x1F53A;
-
-
----
-## Exercise 1: Set up Office 365 trial subscription<a name="ex1"></a>
-
-1. In your browser, go to [products.office.com/en-us/business/office-365-enterprise-e3-business-software](https://products.office.com/en-us/business/office-365-enterprise-e3-business-software) and click the link that says `Free Trial`. 
-
-    ![image](./media/2017-03-14_08_28_44.png)
-
-    This will navigate you to this page:
-
-    ![image](./media/2017-03-14_08_38_22.png)
-
-1. Enter the information requested, and click **Next** which will take you to the following page:
-    
-    ![image](./media/2016-10-14_19-06-31.gif)
-
-1. Choose a `user id` and a `tenant name` for your trial.  In this case I chose `devcampross`, but you can choose anything you'd like, as long as it is unique.  You'll also have to choose a password, and click `Create my account`.
-    
-1. Next you will see this page, which asks for phone verification:
-
-    ![image](./media/2016-10-14_19-07-30.gif)
-
-1. After this process is complete, your O365 trial will be set up, and you'll see this page:
-    
-    ![image](./media/2016-10-18_12-39-13.gif)
-
-    > Make note of your user id, which will be used to sign onto the Azure portal later.
-
-1. Click `You're ready to go`, which will take you to the following screen:
-
-    ![image](./media/2017-03-14_08_49_17.png)
-
-1. Click on the `Admin` app icon, which will open the Office365 admin center page in your browser. It will look like this:
-
-    ![image](./media/2017-06-15_10_19_00.png)
-
-     If you'd like to see the welcome tour click `Next`, or simply close the dialog box.   
-    
-Stay on this page until the next exercise.
-
----
-## Exercise 3: Start your VSTS trial subscription<a name="ex3"></a>
+## Exercise 1: Start your VSTS trial subscription<a name="ex1"></a>
 
 In a future lab we will use [Visual Studio Team Services](https://www.visualstudio.com/team-services/), or "VSTS" for short. In this exercise we will enable a free trial subscription.
 
@@ -89,13 +40,13 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     ![image](./media/2018-07-05_15_36_42.png)
 
     Complete the sign in process if needed using your Proge-Software account:
-    
+
     ![image](./media/2018-07-05_15_37_19.png)
 
     You should be taken to a screen that looks like this:
 
     ![image](./media/2018-07-05_15_38_22.png)
-    
+
     Click on `Create new account` to set your VSTS account. Please note that sometimes you may be taken to the following screen directly:
 
     ![image](./media/2018-07-05_15_39_08.png)
@@ -103,7 +54,8 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     Enter your email name followed by `-proge` and click `Continue`.
 
 ---
-## Exercise 4: Configure your Azure subscription for DevCamp<a name="ex4"></a>
+
+## Exercise 2: Configure your Azure subscription for DevCamp<a name="ex2"></a>
 
 1. We have created an Azure Resource Group template that will configure the resources you need in Azure for the DevCamp. To deploy these resources in your Azure subscription, `control + click` on the blue ***Deploy to Azure*** button below:
 
@@ -113,9 +65,9 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2018-07-07_15_54_39.png)
 
-1.  Select as subscription, choose `Use existing` resource group and select `Corso-MS-Cloud`from the list. 
+1. Select as subscription, choose `Use existing` resource group and select `Corso-MS-Cloud`from the list.
 
-1.  Enter your Proge-Software account name as `User Name` (i.e. the part before `@progesoftware.it` in your email address).
+1. Enter your Proge-Software account name as `User Name` (i.e. the part before `@progesoftware.it` in your email address).
 
 1. Check the box that indicates you agree to the terms and conditions, and click the `Purchase` button.
 
@@ -130,7 +82,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 1. This will take approximately 20-30 minutes to complete. Please do not continue on until the template has completed.
 
     In a later session, we will take a look at Azure Resource Group templates, and how to manage your infrastructure the same way you manage your code. As a short introduction, a template is a JSON file that contains definitions for the resources you want in your resource group. When you apply the resource group template, Azure will apply the template to your Azure resource group, and create the resources you have specified in the template. This makes it easy to maintain the infrastructure definition in the JSON text file.
-    
+
     In the resource group template we have created for DevCamp, there are several types of resources including Web Apps and a Virtual Machine. Resource Group Templates are usually fairly quick to apply - the reason this one takes so long is that we are creating a Windows Virtual machine and installing all the tools you will need for the DevCamp including Visual Studio, and other software resources.
 
 1. You will know when the Resource Group finishes provisioning either by the Notification drop-down, or by navigation on the left-hand bar to `Resource Groups` -> `Corso-MS-Cloud` and check the `Deployments` status for `Succeeded`.
@@ -139,14 +91,15 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     Once the Resource Group creation is done, you can visit the resource group by clicking `Resource Groups` on the left navigation pane:
 
-    ![image](./media/2016-10-18_13-36-29.gif) 
+    ![image](./media/2016-10-18_13-36-29.gif)
 
 1. Then click on your Resource group to open it:
 
     ![image](./media/2018-07-07_08_25_59.png)
 
 ---
-## Exercise 5: Use an Azure Virtual Machine for remote development<a name="ex5"></a>
+
+## Exercise 3: Use an Azure Virtual Machine for remote development<a name="ex3"></a>
 
 1. The Azure resource group template will have created a virtual machine that can be used for remote development on Windows. Exercise 5 describes the configuration for the Windows virtual machine, which would be appropriate for any of the languages.
 
@@ -169,15 +122,15 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     ![image](./media/2017-06-15_11_57_30.png)
 
     When the windows security dialog pops up, the user name `l-admin` should be pre-selected. If not click on the `More choices` link, then choose `Use a different account`.
-    
+
     ![image](./media/2017-06-15_12_02_00.png)
 
 1. Use the following credentials to log on to the machine:
-    
+
     > User Name = `.\l-admin`
     >
-    > Password = `Devc@mp2016!` 
- 
+    > Password = `Devc@mp2016!`
+
     ![image](./media/2017-06-15_11_57_00.png)
 
     > It would be wise to change the password in the virtual machine.
@@ -196,7 +149,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     > NOTE: On some high resolution monitors (HIGH DPI), you will notice that the icons and command line windows appear small. If this is an issue, you can download [Remote Desktop Connection Manager 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44989).
 
-1. Change directory to the root using `cd c:\ `.
+1. Change directory to the root using `cd c:\`.
 
 1. Type `git clone https://github.com/AzureCAT-GSI/DevCamp.git`:
 
@@ -215,11 +168,11 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     > Depending on the version of the Windows image and Visual Studio, your start experience may vary:
 
     ![image](./media/image-011.gif)
-    
+
     or
-    
+
     ![image](./media/2016-10-18_17-59-21.gif)
-    
+
 1. Create a VSTS repository. Enter a repository name and click continue:
 
     ![image](./media/2016-10-18_18-07-34.gif)
@@ -233,7 +186,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     ![image](./media/2017-10-30_12_01_00.png)
 
 1. Enter a repository name, select `Git` and click `Continue`:
- 
+
     ![image](./media/2017-10-30_12_05_00.png)
 
 1. After the repository has been created click `Clone in Visual Studio`:
@@ -247,7 +200,8 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 1. Close the remote desktop connection.
 
 ---
-## Exercise 6: Deploy shared API application<a name="ex6"></a>
+
+## Exercise 4: Deploy shared API application<a name="ex4"></a>
 
 1. The API application has been prepared for you to be available as a communication partner during different exercises and just needs to be deployed once. It will be first used in the second hands on lab.
 
@@ -255,7 +209,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2018-07-07_08_58_27.png)
 
-1. Locate the app service named `incidentapi...` in the resource group blade:    
+1. Locate the app service named `incidentapi...` in the resource group blade:
 
     ![image](./media/2018-07-07_08_59_43.png)
 
@@ -266,27 +220,27 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     A new browser tab will open.
 
     > If the page looks like the image displayed below, this means the API was automatically deployed from GitHub, and you can skip the rest of this exercise.
-    
+
     ![image](./media/2016-11-14_12-10-59.gif)
 
     > If the page looks like the image below, continue with this exercise
-         
+
     ![image](./media/2016-11-14_12-03-50.gif)
 
 1. In the Azure portal, select the API Application (noted with the ![image](./media/image-024.gif) icon).
-    
+
     ![image](./media/image-019.gif)
 
 1. On the details blade select `Deployment options`.
- 
+
     ![image](./media/image-020.gif)
 
 1. If the app deployment is connected, click `Disconnect` on the menu bar.
- 
+
     ![image](./media/2017-06-15_15_47_00.png)
 
-1. Then select `Choose source` in the blade and select `External Repository`. 
- 
+1. Then select `Choose source` in the blade and select `External Repository`.
+
     ![image](./media/image-022.gif)
 
 1. Paste the following in the Repository URL field `https://github.com/AzureCAT-GSI/DevCamp.git`.
@@ -296,7 +250,8 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 1. Select `OK`.
 
 ---
-## Exercise 7: Azure Portal walk-through<a name="ex7"></a>
+
+## Exercise 5: Azure Portal walk-through<a name="ex5"></a>
 
 1. On your local machine or the virtual machine in Azure, open a browser window and go to the main Azure portal page, [http://portal.azure.com](https://portal.azure.com). Log in with your Proge credentials if needed. You should see the Azure portal, similar to this:
 
@@ -309,7 +264,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     Under that, clicking on the `+ New` item will allow you to create new deployments, virtual machines, databases, etc:
 
     ![image](./media/2017-06-15_16_29_00.png)
-    
+
 1. On the left you will see a list of the Azure services that you can use on the left hand side. Notice that this list will scroll up and down to reveal more services, and finally an item that says `More Services >`:
 
     ![image](./media/2017-06-15_16_25_00.png)
@@ -320,7 +275,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2016-10-19_15-22-14.gif)
 
-1. The bell icon is for notifications, and in this screenshot, it indicates that there are two notifications pending: 
+1. The bell icon is for notifications, and in this screenshot, it indicates that there are two notifications pending:
 
     ![image](./media/2016-10-19_15-22-14a.gif)
 
@@ -331,7 +286,7 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     If you click on one of the notifications, you can go to the details blade that matches the content of the notification, e.g. the details blade of the starting virtual machine.
 
 1. The `>_` icon opens the Azure Cloud Shell which gives you authenticated shell access to Azure within the browser. It opens at the bottom of the window.
- 
+
     ![image](./media/2017-06-15_16_46_00.png)
 
 1. The gear at the top of the screen lets you set the color palette for the portal, whether or not there will be animations, and other options for the portal itself:
@@ -347,13 +302,13 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
     ![image](./media/2017-06-15_16_48_00.png)
 
 1. The Question icon will give you the ability to enter a support case, manage support requests, or get further information on Azure.
-    
+
     ![image](./media/2016-10-19_15-22-14d.gif)
 
-1. Your login name and company name on the upper left hand corner has two functions: 
+1. Your login name and company name on the upper left hand corner has two functions:
 
     ![image](./media/2016-10-19_15-22-14e.gif)
-    
+
     If you hover the mouse over your name, you'll get information about your login, the directory and subscription:
 
     ![image](./media/2016-10-19_16-25-54.gif)
@@ -384,11 +339,11 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 
     ![image](./media/2017-06-16_08_53_00.png)
 
-1. The Windows VM is managed by an [Azure DevTest lab](https://azure.microsoft.com/en-us/services/devtest-lab/) named `DevCamp` which handles the startup and shutdown of the machine. To change the shut down and start up schedule, click on the DevTest Lab icon and select `Configuration and policies`. 
+1. The Windows VM is managed by an [Azure DevTest lab](https://azure.microsoft.com/en-us/services/devtest-lab/) named `DevCamp` which handles the startup and shutdown of the machine. To change the shut down and start up schedule, click on the DevTest Lab icon and select `Configuration and policies`.
 
     ![image](./media/2017-06-16_09_04_00.png)
 
- 1. Select `Auto-shutdown`.
+1. Select `Auto-shutdown`.
 
     ![image](./media/2017-10-30_12_21_00.png)
 
@@ -404,7 +359,8 @@ In a future lab we will use [Visual Studio Team Services](https://www.visualstud
 > Resource group templates will be explained further in a later lab.
 
 ---
-## Exercise 8: View the resources you created<a name="ex8"></a>
+
+## Exercise 6: View the resources you created<a name="ex6"></a>
 
 Going back to the list of resources in the resource group `Corso-MS-Cloud`, we'll go through the list of each resource, with a description.  Feel free to click on the resource and view its detail blade.
 
@@ -442,16 +398,18 @@ They are all called with your account name and a random string but are of differ
 
 * `Public IP address` - This is a public IP that will allow the Windows development virtual machine to communicate with the Internet (e.g. via Remote Desktop).  If you delete the Windows virtual machine, you can safely delete this.
 
-* `Virtual machine` - This is the Windows server virtual machine that we are using as a development machine for these hands-on-labs. You can delete this machine after the developer-environment lab if you are using an on-premises/local machine for development. 
+* `Virtual machine` - This is the Windows server virtual machine that we are using as a development machine for these hands-on-labs. You can delete this machine after the developer-environment lab if you are using an on-premises/local machine for development.
 
 * `Network interface` - This is a public network interface that will allow the Windows development virtual machine to communicate on the network.  If you delete the Windows virtual machine, you can safely delete this.
 
 * `Disk` - Storage account for storing for VHDs for the machines DevTest labs.
 
 ---
+
 ## Summary
 
 In this hands-on lab, you learned how to:
+
 * Set up an Office365 developer subscription.
 * Configure your Azure subscription for DevCamp.
 * Create an Azure Virtual Machine for development where you can carry out the following hands on labs.
@@ -460,7 +418,7 @@ In this hands-on lab, you learned how to:
 
 After completing this module, you can continue on to Module 2: Building modern cloud apps.
 
-### View Module 2 instructions for [.NET](../02-modern-cloud-apps).
+### View Module 2 instructions for [.NET](../02-modern-cloud-apps)
 
 ---
-Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at <https://opensource.org/licenses/MIT>.
