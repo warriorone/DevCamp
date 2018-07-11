@@ -9,7 +9,6 @@ These hands on labs (HOLs) are intended to introduce developers to Azure and Off
 Setting up your developer environment for your specific language.
 In this lab you will create the environment that is needed for your language preference.
 
-* Create O365 Developer Tenant
 * Connect an Azure subscription
 * Take prepared image, walk through the tools that are available for your platform (.NET | Windows)
 * Run a custom ARM Template to scaffold out resources used during the training
@@ -111,7 +110,7 @@ In this lab, you will create a Power BI report to visualize the Incident data. Y
 * Connect and prepare the data
 * Publish to the Power BI service
 
-#### View instructions for [.NET](HOL/dotnet/08-PowerBI)
+### View instructions for [.NET](HOL/dotnet/08-PowerBI)
 
 ---
 
@@ -126,4 +125,4 @@ In this lab, you will combine the web app with an IoT device based on an Arduino
 
 ---
 
-Copyright 2017 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2017 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at <https://opensource.org/licenses/MIT>.
