@@ -198,12 +198,16 @@ This hands-on-lab has the following exercises:
 > ***If you do not see `REST API Client` but `Azure API` please: use the `end` folder for this HOL which has the REST API already configured.***
 > 1. Copy folder `\DevCamp.WebApp\IncidentAPIClient` from `C:\DevCamp\HOL\dotnet\02-modern-cloud-apps\end` to `C:\DevCamp\HOL\dotnet\02-modern-cloud-apps\start`.
 > 1. In `Solution Explorer` click on `Show All Files` and then on `Refresh`:
+>
 > ![image](./media/2018-07-11_15_22_11.png)
 > 1. Right click on `IncidentAPIClient` folder and select `Include In Project`:
+>
 > ![image](./media/2018-07-11_15_22_33.png)
 > 1. Right click on `DevCamp.WebApp` project and select `Manage NuGet Packages...`:
+>
 > ![image](./media/2018-07-11_15_24_19.png)
 > 1. Click on `Browse`, search for `microsoft.rest.clientruntime`, select version `2.3.2` from the list and click `Install`:
+>
 > ![image](./media/2018-07-11_15_28_26.png)
 > You can now skip the following two steps and move to the third one.
 
