@@ -2,13 +2,13 @@
 
 ## Overview
 
-In this lab, you will set up an Office365 trial subscription, configure your Azure subscription for the DevCamp, and provision a virtual machine in the subscription to use for development of further labs.
+In this lab, you will set up a VSTS account, configure your Azure subscription for the DevCamp, and provision a virtual machine in the subscription to use for development of further labs.
 
 ## Objectives
 
-In this hands-on lab, you will set up an Office365 developer subscription, and an Azure-based virtual machine for the development environment for subsequent labs in the DevCamp.  To expedite the process, we've prepared a Windows image that you will copy into your own environment, start the virtual machine and connect to it.  You will then configure the components for Azure development.
+In this hands-on lab, you will set up a VSTS account, and an Azure-based virtual machine for the development environment for subsequent labs in the DevCamp.  To expedite the process, we've prepared a Windows image that you will copy into your own environment, start the virtual machine and connect to it.  You will then configure the components for Azure development.
 
-* Set up an Office365 trial subscription.
+* Set up an a VSTS account.
 * Configure your Azure subscription for DevCamp.
 * Create an Azure Virtual Machine for remote development.
 * Connect to the Azure Virtual Machine and configure it for development.
@@ -410,7 +410,7 @@ They are all called with your account name and a random string but are of differ
 
 In this hands-on lab, you learned how to:
 
-* Set up an Office365 developer subscription.
+* Set up a VSTS account.
 * Configure your Azure subscription for DevCamp.
 * Create an Azure Virtual Machine for development where you can carry out the following hands on labs.
 * Connect to the Azure Virtual Machine and configure it for development.
