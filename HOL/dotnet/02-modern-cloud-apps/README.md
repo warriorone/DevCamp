@@ -23,7 +23,7 @@ In this hands-on-lab, you will learn how to:
 
 ## Prerequisites
 
-* The source for the starter app is located in the [start](start) folder. 
+* The source for the starter app is located in the [start](start) folder.
 * The finished project is located in the [end](end) folder.
 * Deployed the starter ARM Template in [HOL 1](../01-developer-environment).
 * Established a development machine either on-premises or in Azure.
@@ -31,14 +31,17 @@ In this hands-on-lab, you will learn how to:
 ## Exercises
 
 This hands-on-lab has the following exercises:
+
 * [Exercise 1: Integrate the API](#ex1)
 * [Exercise 2: Add a caching layer](#ex2)
 * [Exercise 3: Write images to Azure Blob storage](#ex3)
 
 ### Note
-> ***In the hands-on-labs you will be using Visual Studio Solutions. Please do not update the NuGet packages to the latest available, as we have not tested the labs with every potential combination of packages.*** 
+
+> ***In the hands-on-labs you will be using Visual Studio Solutions. Please do not update the NuGet packages to the latest available, as we have not tested the labs with every potential combination of packages.***
 
 ---
+
 ## Exercise 1: Integrate the API<a name="ex1"></a>
 
 1. You should have performed a `git clone` of the DevCamp repository in the previous hands-on lab. If you did not, please complete the developer workstation setup in that lab.
@@ -60,8 +63,8 @@ This hands-on-lab has the following exercises:
 1. Click on `Dashboard` to see some sample incidents hard-coded in the solution:
 
     ![image](./media/2017-06-16_11_50_00.png)
-    
-	As part of the original ARM template we deployed an ASP.NET WebAPI that queries a CosmosDB Collection. Let's integrate that API so that the incidents are dynamically pulled from a data store.
+
+    As part of the original ARM template we deployed an ASP.NET WebAPI that queries a CosmosDB Collection. Let's integrate that API so that the incidents are dynamically pulled from a data store.
 
 1. Close the browser, which will also stop the debugging process.
 
@@ -78,32 +81,32 @@ This hands-on-lab has the following exercises:
     ![image](./media/2017-06-16_11_33_00.png)
 
     You should be greeted by the default ASP.NET landing page:
-    
+
     ![image](./media/image-05.gif)
 
 1. Since we provisioned a new instance of CosmosDB, there are no records in the database. We will generate some sample data using the shared API. It has a route that can be accessed at any time to create or reset the documents in your collection. In the browser, add the following to your API URL to generate sample documents.
 
     >
-    > Add `/incidents/sampledata` to the end of your API URL. 
+    > Add `/incidents/sampledata` to the end of your API URL.
     >
     > The URL should look like the following:
     >  
-    > `http://incidentapi[YOUR_RG_NAME].azurewebsites.net/incidents/sampledata`
+    > `http://incidentapi[...].azurewebsites.net/incidents/sampledata`
     >
     > You can also do this using the swagger pages which will be available at this URL:
     >
-    >`http://incidentapi[YOUR_RG_NAME].azurewebsites.net/swagger`
-
+    >`http://incidentapi[...].azurewebsites.net/swagger`
+    >
     > In Chrome you should see a JSON response directly in the browser tab, however in Internet Explorer you may be asked top Open or Download a file. If prompted, Open the file in Notepad or Visual Studio Code to see the return message.
 
-1. After navigating to the `sampledata` route, let's verify that the documents were created in CosmosDB. In the Azure Portal, navigate to the Resource Group blade, select the `DevCamp` and then select the CosmosDB resource which starts with `incidentdb`.
+1. After navigating to the `sampledata` route, let's verify that the documents were created in CosmosDB. In the Azure Portal, navigate to the Resource Group blade, select the `Corso-MS-Cloud` and then select the CosmosDB resource which starts with `incidentdb`.
 
     ![image](./media/2017-06-16_11_39_00.png)
 
     Select the CosmosDB database. This will open the CosmosDB blade.
 
     Select `Data Explorer`.
-    
+
     ![image](./media/2018-07-07_19_40_42.png)
 
     The Data Explorer is an easy way to view the documents inside of a collection via the browser. Select the collection with your name, then select `Documents`, finally select the first record to see the JSON body of the document.
@@ -116,7 +119,7 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/2017-06-16_11_47_00.png)
 
-1. On the Dashboard page, notice how the static sample incidents are stubbed in between the  `<!--TEMPLATE CODE -->` comment block.   
+1. On the Dashboard page, notice how the static sample incidents are stubbed in between the  `<!--TEMPLATE CODE -->` comment block.
 
     ![image](./media/image-10.gif)
 
@@ -170,7 +173,7 @@ This hands-on-lab has the following exercises:
     ```
 
 1. We need to add a reference to the Web API project. Get the URL by navigating to Azure and copying from the overview blade of the `incidentapi...`:
-    
+
     ![image](./media/2017-06-16_12_07_00.png)
 
 1. Copy the URL of the API app to the clipboard.
@@ -192,11 +195,21 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/2017-06-16_12_14_00.png)
 
-> ***If you do not see `REST API Client` but `Azure API` please use the `end` folder for this HOL which has the REST API already configured.*** 
+> ***If you do not see `REST API Client` but `Azure API` please: use the `end` folder for this HOL which has the REST API already configured.***
+> 1. Copy folder `\DevCamp.WebApp\IncidentAPIClient` from `C:\DevCamp\HOL\dotnet\02-modern-cloud-apps\end` to `C:\DevCamp\HOL\dotnet\02-modern-cloud-apps\start`.
+> 1. In `Solution Explorer` click on `Show All Files` and then on `Refresh`:
+> ![image](.media/2018-07-11_15_22_11.png)
+> 1. Right click on `IncidentAPIClient` folder and select `Include In Project`:
+> ![image](.media/2018-07-11_15_22_33.png)
+> 1. Right click on `DevCamp.WebApp` project and select `Manage NuGet Packages...`:
+> ![image](.media/2018-07-11_15_24_19.png)
+> 1. Click on `Browse`, search for `microsoft.rest.clientruntime`, select version `2.3.2` from the list and click `Install`:
+> ![image](.media/2018-07-11_15_28_26.png)
+> You can now skip the following two steps and move to the third one.
 
 1. In the Swagger URL field paste the value for the `INCIDENT_API_URL`, appending `/swagger/docs/v1` to the end of the URL.
 
-1. For the Client Namespace, enter `IncidentAPI` and click `OK`. 
+1. For the Client Namespace, enter `IncidentAPI` and click `OK`.
 
     ![image](./media/image-13.gif)
 
@@ -205,13 +218,13 @@ This hands-on-lab has the following exercises:
     > ***DO NOT Update the NuGet package for 'Microsoft.Rest.ClientRuntime'. There is a dependency issue with the updated package.***
 
     ![image](./media/image-28.gif)
-	
+
     > ***Should you encounter problems in the dev environment you may have to downgrade the 'Newtonsoft.Json' package to version 7.0.1.***
     >
     > From Visual Studio, go to `Tools` -> `Nuget Package Manager` -> `Nuget Package Manager Console`.
     >
     > From the command line prompt, type: `install-package Newtonsoft.Json -Version 7.0.1`
-
+    >
     > Copy the Newtonsoft.Json.DLL from `C:\DevCamp\HOL\dotnet\02-modern-cloud-apps\start\packages\Newtonsoft.Json.7.0.1\lib\net45` to `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE`
     >
     > Restart Visual Studio and continue.
@@ -325,7 +338,7 @@ This hands-on-lab has the following exercises:
 
     This should resolve all the errors in `DashboardController.cs`.
 
-1.  To view Incidents, open the file located at `DevCamp.WebApp` -> `Controllers` -> `IncidentController.cs` and add code to it.
+1. To view Incidents, open the file located at `DevCamp.WebApp` -> `Controllers` -> `IncidentController.cs` and add code to it.
 
 1. In between the `//### ADD DETAILS VIEW CODE HERE ###` comment block in the `Details` method, select the body of this method and delete it.
 
@@ -345,14 +358,14 @@ This hands-on-lab has the following exercises:
         return View(incidentView);
     ```
 
-1. Resolve the references for `DevCamp.WebApp.ViewModels` and `IncidentAPI.Models`. 
+1. Resolve the references for `DevCamp.WebApp.ViewModels` and `IncidentAPI.Models`.
 
 1. The Incident Mapper will handle the mapping from the data that is returned from the API. It is located at `DevCamp.WebApp` -> `Mappers` -> `IncidentMapper.cs`.
 
 1. Open it and locate the `///TODO: Add Incident Mapper Code` comment block
 
 1. Paste the following:
-    
+
     ```csharp
     public class IncidentMapper
     {
@@ -396,7 +409,7 @@ This hands-on-lab has the following exercises:
     ```
 
 1. Resolve the references for the following namespaces `IncidentAPI`, `IncidentAPI.Models`, `DevCamp.WebApp.Utils`, `DevCamp.WebApp.ViewModels` and `DevCamp.WebApp.Mappers` (or you can simply paste this in to the top of each file):
-    
+
     ```C#
     using IncidentAPI;
     using IncidentAPI.Models;
@@ -427,7 +440,7 @@ This hands-on-lab has the following exercises:
                     Newtonsoft.Json.Linq.JObject jobj = (Newtonsoft.Json.Linq.JObject)result;
                     incidentToSave = jobj.ToObject<Incident>();
                 }
-                
+
                 //TODO: ADD CODE TO UPLOAD THE BLOB
 
                 //TODO: ADD CODE TO CLEAR THE CACHE
@@ -441,7 +454,7 @@ This hands-on-lab has the following exercises:
         }
 
         return View(incident);
-    } 
+    }
     ```
 
 1. Resolve the references for `System.Web`.
@@ -451,10 +464,13 @@ This hands-on-lab has the following exercises:
     ![image](./media/2017-06-16_13_10_00.png)
 
 ---
+
 ## Exercise 2: Add a caching layer<a name="ex2"></a>
+
 Querying our API is a big step forward, but querying a cache would increase performance and limit the load on our API.  Azure offers a managed (PaaS) service called [Azure Redis Cache](https://azure.microsoft.com/en-us/services/cache/).
 
 We deployed an instance of Azure Redis Cache in the ARM Template, but need to add the following application logic:
+
 * First, check the cache to see if a set of incidents is available.
 * If not, query the API.
 * Cache response from API.
@@ -464,7 +480,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
 
     ![image](./media/2017-06-16_13_42_00.png)
 
-1. Before we do anything with the NuGet package manager, we would like to point out that we have developed the DevCamp application with specific versions of all the included NuGet packages.  For this reason, please **DO NOT** update the modules in this tool. 
+1. Before we do anything with the NuGet package manager, we would like to point out that we have developed the DevCamp application with specific versions of all the included NuGet packages.  For this reason, please **DO NOT** update the modules in this tool.
 
 1. Click `Browse` and enter `Microsoft.Extensions.Caching.Redis` in the search box.  Add the `Microsoft.Extensions.Caching.Redis` package by highlighting the name, selecting version `1.1.2` (**DO NOT** use a higher version) and selecting `install`:
 
@@ -612,7 +628,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
     ```
 
 1. Set a breakpoint on the declaration of the ***CACHE_EXPIRATION_SECONDS*** variable, in preparation for when we run the application later.
- 
+
     ![image](./media/2017-06-16_15_26_00.png)
 
 1. If a new incident is reported, that will make the cached data stale.  We can ensure that the newest data is retrieved in this case by clearing the cache when a new incident is reported. Open the Incident Controller. It is located at `DevCamp.WebApp` -> `Controllers` -> `IncidentController.cs`.
@@ -625,7 +641,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
     //##### CLEAR CACHE ####
 
     return RedirectToAction("Index", "Dashboard");
-    ``` 
+    ```
 1. Hit `F5` to start debugging. Select the dashboard page. You should hit the breakpoint. Hit `F10` to step over the call. The cache is empty so the application execution falls to the else condition, thus calling the API as before.
 
 1. Hit `F5` to continue stepping. The data should be added to the cache.
@@ -639,6 +655,7 @@ We deployed an instance of Azure Redis Cache in the ARM Template, but need to ad
 1. Close the browser and stop debugging.  You will also want to delete the breakpoint you set in `DashboardController.cs` file.
 
 ---
+
 ## Exercise 3: Write images to Azure Blob Storage<a name="ex3"></a>
 
 When a new incident is reported, the user can attach a photo.  In this exercise we will process that image and upload it into an Azure Blob Storage Container.
@@ -653,7 +670,7 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
 
     ![image](./media/2017-06-16_15_43_00.png)
 
-1. In Visual Studio update the `Web.config` which is located at `DevCamp.WebApp` -> `Web.config` with the values from the Azure storage account.  The `AZURE_STORAGE_ACCOUNT` should be the storage account name and the `AZURE_STORAGE_ACCESS_KEY` the `key1`, retrieved above. 
+1. In Visual Studio update the `Web.config` which is located at `DevCamp.WebApp` -> `Web.config` with the values from the Azure storage account.  The `AZURE_STORAGE_ACCOUNT` should be the storage account name and the `AZURE_STORAGE_ACCESS_KEY` the `key1`, retrieved above.
 
     ```xml
     <add key="AZURE_STORAGE_ACCOUNT" value="" />
@@ -674,11 +691,11 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
     <add key="REDISCACHE_SSLPORT" value=""/>
     <add key="REDISCACHE_PRIMARY_KEY" value=""/>
     ```
-1. Now that we configured the storage config values, we can add the logic to upload the images. 
+1. Now that we configured the storage config values, we can add the logic to upload the images.
 
 1. In Visual Studio, add the `WindowsAzure.Storage` NuGet package version 8.1.4 to the solution.
 
-    > To do so, repeat the steps from the beginning of exercise 2 that were used to add the `Microsoft.Extensions.Caching.Redis` NuGet package. 
+    > To do so, repeat the steps from the beginning of exercise 2 that were used to add the `Microsoft.Extensions.Caching.Redis` NuGet package.
 
     ![image](./media/2017-06-16_15_56_00.png)
 
@@ -771,7 +788,7 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
         }
     }
     ```
-    
+
     Study the code before you continue. We will now insert calls to the Storage Helper methods in the Incident Controller.
 
 1. In the Incident Controller located at `DevCamp.WebApp` -> `Controllers` -> `IncidentController.cs`, locate the `//TODO: ADD CODE TO UPLOAD THE BLOB` add the following inside of the `Create` method decorated with `[HttpPost]`. This will handle the upload of the image file.
@@ -784,7 +801,6 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
         //Give the image a unique name based on the incident id
         var imageUrl = await StorageHelper.UploadFileToBlobStorage(incidentToSave.Id, imageFile);
         //### Add Blob Upload code here #####
-
 
         //### Add Queue code here #####
         //Add a message to the queue to process this image
@@ -808,13 +824,13 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
 1. Save the files and hit `F5` to debug. Click the `Report Outage` link.
 
 1. Add a new incident with a picture and it will get uploaded to Azure storage.
- 
+
     ![image](./media/2017-06-16_16_15_00.png)
 
 1. Close the browser and stop debugging.
 
 1. Within your virtual machine, open the Azure Storage Explorer. If it has not been installed automatically you can download the setup from [storageexplorer.com](http://storageexplorer.com/).
- 
+
 1. Connect it to your Azure Storage using your login data.
 
 1. Verify that your image and a queue entry were uploaded to Azure storage.
@@ -823,14 +839,17 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
 
     You can also use the Azure Storage Explorer to view the `thumbnails` queue, and verify that there is an entry for the image we uploaded. It is also safe to delete the images and queue entries using Azure Storage Explorer, and enter new Incidents for testing.
 
-Our application can now create new incidents and upload related images to Azure Blob Storage. It will also put an entry into an Azure queue, to invoke an image resizing process, for example. In a later demo, we'll show how an [Azure Function](https://azure.microsoft.com/en-us/services/functions/) can be invoked via a queue entry to 
+Our application can now create new incidents and upload related images to Azure Blob Storage. It will also put an entry into an Azure queue, to invoke an image resizing process, for example. In a later demo, we'll show how an [Azure Function](https://azure.microsoft.com/en-us/services/functions/) can be invoked via a queue entry to
 do tasks such as this.
 
 ---
+
 ## Summary
-Our application started as a prototype on our local machine, but now uses a variety of Azure services. We started by consuming data from an API hosted in Azure, optimized that data call by introducing Azure Redis Cache, and enabled the uploading of image files to the affordable and redundant Azure Storage. 
+
+Our application started as a prototype on our local machine, but now uses a variety of Azure services. We started by consuming data from an API hosted in Azure, optimized that data call by introducing Azure Redis Cache, and enabled the uploading of image files to the affordable and redundant Azure Storage.
 
 In this hands-on lab, you learned how to:
+
 * Use Visual Studio to connect to an Azure hosted ASP.NET WebAPI that queries a CosmosDB Collection and leveraging several Azure services at the same time.
 * Provision an Azure Web App to host the Web site.
 * Modify a view to add caching. This enables you to use the benefits of the Azure Redis Cache, reducing queries and increasing performance.
@@ -838,7 +857,7 @@ In this hands-on lab, you learned how to:
 
 After completing this module, you can continue on to Module 3: Identity with Azure AD and Office 365 APIs.
 
-### View Module 3 instructions for [.NET](../03-azuread-office365).
+### View Module 3 instructions for [.NET](../03-azuread-office365)
 
 ---
-Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at <https://opensource.org/licenses/MIT>.
