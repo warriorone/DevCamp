@@ -50,7 +50,6 @@ This lab will introduce you to identity in Azure AD and the Microsoft Graph. You
 
 This lab will introduce you to DevOps with Visual Studio Team Services. You will perform the following tasks:
 
-* Create Visual Studio Team Services (VSTS) Online account
 * Create Git repository
 * Clone Git repo locally
 * Push code into VSTS
