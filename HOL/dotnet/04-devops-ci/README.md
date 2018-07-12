@@ -1,10 +1,13 @@
 # DevOps with Visual Studio Team Services (.NET)
 
 ## Overview
+
 In this lab, you will create a Visual Studio Team Services online account, check in your code, create a Continuous Integration pipeline, and test your cloud-based application.
 
 ## Objectives
+
 In this hands-on lab, you will learn how to:
+
 * Create a Visual Studio Team Services online account.
 * Create a VSTS Git repository.
 * Add your code to the VSTS Git repository.
@@ -13,48 +16,33 @@ In this hands-on lab, you will learn how to:
 
 ## Prerequisites
 
-* The source for the starter app is located in the [start](start) folder. 
-* There will be no code changes required so the the [end](end) folder will remain empty. 
+* The source for the starter app is located in the [start](start) folder.
+* There will be no code changes required so the the [end](end) folder will remain empty.
 * Deployed the starter ARM Template [HOL 1](../01-developer-environment).
 * Completion of the [HOL 3](../03-azuread-office365).
 
 > &#x1F53A; **Note**: If you did not complete the previous labs, the project in the [start](start) folder is cumulative. But you need to add the previous HOL's settings to the `Web.config` file and make all necessary changes to Azure. &#x1F53A;
-
+>
 > &#x1F53A; If you did complete HOL 3 just continue with the same solution you have been using. &#x1F53A;
 
 ## Exercises
+
 This hands-on-lab has the following exercises:
-* [Exercise 1: Create VSTS online account](#ex1)
-* [Exercise 2: Create VSTS Git repository](#ex2)
-* [Exercise 3: Add application to VSTS Git](#ex3)
-* [Exercise 4: Create a Continuous Integration pipeline](#ex4)
-* [Exercise 5: Deploy code to an Azure Web App](#ex5)
+
+* [Exercise 1: Create VSTS Git repository](#ex1)
+* [Exercise 2: Add application to VSTS Git](#ex2)
+* [Exercise 3: Create a Continuous Integration pipeline](#ex3)
+* [Exercise 4: Deploy code to an Azure Web App](#ex4)
 
 ---
-## Exercise 1: Create VSTS online account<a name="ex1"></a>
 
-> &#x1F53A; You can skip this exercise if you already created an account in HOL 1. &#x1F53A;
+## Exercise 1: Create VSTS Git repository<a name="ex1"></a>
 
-1. In your browser, navigate to [https://www.visualstudio.com/](https://www.visualstudio.com/)
-
-    ![image](./media/2017-06-21_13_14_00.png)
-
-1. Click `Get started for free` link below `Visual Studio Team Services`.
-
-1. Log in with your Azure AD account.
-
-1. You will be asked to choose an hosting address and if you want to use Git or Team Foundation Version Control. Select `Git` and click `Continue`.
-
-1. A new project called `MyFirstProject` will be automatically created.
-
----
-## Exercise 2: Create VSTS Git repository<a name="ex2"></a>
-
-VSTS gives us the option to use Git or [TFVC](https://www.visualstudio.com/en-us/docs/tfvc/overview) as our project's repository. For this exercise we will use Git, and then clone the repository to our dev machine. 
+VSTS gives us the option to use Git or [TFVC](https://www.visualstudio.com/en-us/docs/tfvc/overview) as our project's repository. For this exercise we will use Git, and then clone the repository to our dev machine.
 
 > Note that if you acquired these lab materials via a `git clone` of the workshop repo then you should select a folder somewhere else on your dev machine. This will minimize conflicts between the two separate repositories.
 
-1. We will ignore the automatically created `MyFirstProject`. Starting at your TFVC account's landing page, click `New Project`.
+1. We will ignore the automatically created `MyFirstProject`. Starting at your TFVC account's landing page (`https://[YOUR_ACCOUNT_NAME]-proge.visualstudio.com`), click `Create Project`.
 
     ![image](./media/2017-06-21_13_56_00.png)
 
@@ -64,14 +52,15 @@ VSTS gives us the option to use Git or [TFVC](https://www.visualstudio.com/en-us
 
 1. Wait for the project to be created. This process may take up to 60 seconds. When finished you will be redirected to the project page
 
-1. Click `Dashboards` and explore your pre-built dashboard. Familiarize yourself with the variety of widgets available, and the customization options. 
+1. Click `Dashboards` and explore your pre-built dashboard. Familiarize yourself with the variety of widgets available, and the customization options.
 
     ![image](./media/2017-06-21_14_01_00.png)
 
 You have now created a project in VSTS with a Git repository. Next we'll clone the repository locally to your developer machine and upload code from our machine to VSTS.
 
 ---
-## Exercise 3: Add application to VSTS Git<a name="ex3"></a>
+
+## Exercise 2: Add application to VSTS Git<a name="ex2"></a>
 
 1. Click `Code` on the top toolbar to navigate to the Code screen.
 
@@ -88,7 +77,6 @@ You have now created a project in VSTS with a Git repository. Next we'll clone t
     > The Internet Explorer will display a security warning. Click `Allow` to continue:
     >
     > ![image](./media/2017-06-21_14_08_30.png)
-
 
 1. When Visual Studio launches, you will be prompted in the `Team Explorer` window to create a local folder to clone into. Select the `...` next to the local address:
 
@@ -130,6 +118,8 @@ You have now created a project in VSTS with a Git repository. Next we'll clone t
     <add key="GRAPH_API_URL" value="https://graph.microsoft.com" />
     ```
 
+1. You need to enable SSL again in the new project, and this will give you a different port number that you need to update both in the `Web.config` and in you application registration on the portal.
+
 1. Compile the solution and make sure it works.
 
 1. On the Team Explorer tab, select the changes view by clicking on `Changes`. You may be prompted to confirm your user name.
@@ -141,7 +131,7 @@ You have now created a project in VSTS with a Git repository. Next we'll clone t
     ![image](./media/2017-06-21_14_24_00.png)
 
     > If you made changes to the files, and you do not see them in the list, ensure that you have cloned the repository from the repo.
-    
+
     ```CMD
     cd\DevCampVSO
     Git init
@@ -174,7 +164,8 @@ You have now created a project in VSTS with a Git repository. Next we'll clone t
      ![image](./media/2017-06-22_08_55_00.png)
 
 ---
-## Exercise 4: Create a Continuous Integration pipeline<a name="ex4"></a>
+
+## Exercise 3: Create a Continuous Integration pipeline<a name="ex3"></a>
 
 With application code now uploaded to VSTS, we can begin to create builds via a Build Definition. Navigate to the `Build` tab from the top navigation. We will use the hosted agent within VSTS to process our builds in this exercise.
 
@@ -186,12 +177,12 @@ With application code now uploaded to VSTS, we can begin to create builds via a 
 
     ![image](./media/2017-06-21_14_41_00.png)
 
-1. The build tasks are created for us as part of the template. 
+1. The build tasks are created for us as part of the template.
 
 1. In the `Process` settings select `Hosted` as the `Agent queue`:
 
     ![image](./media/2017-10-23_13_50_00.png)
-    
+
 1. On the `Get sources` step set the `From` value to your VSTS Project and the `Repository` to the repo that was earlier created.
 
     ![image](./media/2017-06-22_14_40_00.png)
@@ -208,7 +199,7 @@ With application code now uploaded to VSTS, we can begin to create builds via a 
     ```xml
     **\bin\**
     ```
-    
+
     ![image](./media/2017-06-22_11_06_00.png)
 
 1. Click `Save & queue`. Our saved Build Definition is ready to be processed by the Hosted Build Agent.
@@ -218,23 +209,23 @@ With application code now uploaded to VSTS, we can begin to create builds via a 
 1. Accept the defaults and click `Save & Queue`. Your build will then be queued until the Hosted Build Agent can pick it up for processing. This typically takes less than 60 seconds to begin.
 
 1. Click the build number to proceed.
- 
+
     ![image](./media/2017-11-01_11_15_00.png)
 
 1. Once your build completes, click each step on the left navigation bar and inspect the output.
 
     ![image](./media/2017-06-22_11_17_00.png)
-	
-	> ***Note:*** If your build fails go back to Visual Studio and make sure the solution can be build. Make any neccessary fixes and commit the changes by staging the changes, synchronizing and pushing.
 
-1. Let's inspect the output artifacts that were published. Click the `Build XXX` header in the left pane to view the build's landing page. 
+    > ***Note:*** If your build fails go back to Visual Studio and make sure the solution can be build. Make any neccessary fixes and commit the changes by staging the changes, synchronizing and pushing.
+
+1. Let's inspect the output artifacts that were published. Click the `Build XXX` header in the left pane to view the build's landing page.
 
 1. Select `Artifacts` from the horizontal toolbar.
 
     ![image](./media/2017-06-22_11_18_00.png)
 
 1. A `drop` folder has been created containing the compiled output. Click `Explore` to see them.
-    
+
     ![image](./media/2017-06-22_11_20_00.png)
 
 1. Expand the `drop` folder and view the build artifacts. Click `Close` when complete.
@@ -250,11 +241,12 @@ With application code now uploaded to VSTS, we can begin to create builds via a 
 We now have a Build Definition that will compile the application and create a package for deployment anytime code is checked into the repository, or a manual build is queued.
 
 ---
-## Exercise 5: Deploy code to an Azure Web App<a name="ex5"></a>
+
+## Exercise 4: Deploy code to an Azure Web App<a name="ex4"></a>
 
 In the ARM Template that was originally deployed, a web app was created as a development environment to hold a deployed .NET application. We will use this web app as a deployment target from VSTS. First, we need to prepare this web app for our application code.
 
-1. Visit the Azure Web App by browsing to the [Azure Portal](http://portal.azure.com), opening the `DevCamp` Resource Group, and select the Azure Web App resource that begins with `dotnetapp` before the random string. 
+1. Visit the Azure Web App by browsing to the [Azure Portal](http://portal.azure.com), opening the `Corso-MS-Cloud` Resource Group, and select the Azure Web App resource that begins with `dotnetapp` before the random string.
 
     ![image](./media/2017-06-22_11_28_00.png)
 
@@ -282,7 +274,7 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
     ![image](./media/image-027.gif)
 
-1.  We need to connect your VS agent with your Azure subscription so it can deploy resources. Select `Tasks` from the menu. If the drop-down next to `Azure subscription` offers you your subscription, select it, authorize it and continue to select your `dotnetapp...` Azure Web app resource from the `App Service name` drop-down.
+1. We need to connect your VS agent with your Azure subscription so it can deploy resources. Select `Tasks` from the menu. If the drop-down next to `Azure subscription` offers you your subscription, select it, authorize it and continue to select your `dotnetapp...` Azure Web app resource from the `App Service name` drop-down.
 
     ![image](./media/2017-06-22_09_05_00.png)
 
@@ -298,13 +290,13 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
         ![image](./media/image-025.gif)
 
-        > If your subscription is not in the dropdown list, click the link at the bottom of the window, and the window 
-        > format will change to allow you to enter connection information on your subscription:    
+        > If your subscription is not in the dropdown list, click the link at the bottom of the window, and the window
+        > format will change to allow you to enter connection information on your subscription:
 
     1. Another option is to create a service principal. The steps to create a service principal is below.
 
-        > If you have not created a service principal for the subscription, you will have to follow the 
-        > [instructions](https://go.microsoft.com/fwlink/?LinkID=623000&clcid=0x409) to do so.  This process will 
+        > If you have not created a service principal for the subscription, you will have to follow the
+        > [instructions](https://go.microsoft.com/fwlink/?LinkID=623000&clcid=0x409) to do so.  This process will
         > provide the information to enter in this dialog:
         >
 
@@ -320,7 +312,7 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
             > If the PowerShell gives an error at runtime regarding a missing AzureRM module, please install it by executing the following command in a PowerShell window with admin privileges: `Install-Module AzureRM`. Then run `Set-ExecutionPolicy RemoteSigned -Scope process` to adjust the execution level
 
-        1. The PowerShell script will ask for your **subscription name** and a **password**. This password is for the service principal only, not the password for your subscription. So you can use whatever password you would like, just remember it.    
+        1. The PowerShell script will ask for your **subscription name** and a **password**. This password is for the service principal only, not the password for your subscription. So you can use whatever password you would like, just remember it.
 
             ![image](./media/image-046a.gif)
 
@@ -342,7 +334,7 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
         1. If this is the first time you are connecting to this subscription, you will need to authorize VSTS to have access to deploy to Azure. After you select your subscription, click `Authorize`.
 
-        ![image](./media/image-067.gif) 
+        ![image](./media/image-067.gif)
 
     1. Navigate back to the VSTS build tab in the browser and click the click the `Refresh` icon to refresh the connections. The `Azure` connection that we setup should now appear. Select it.
 
@@ -359,7 +351,7 @@ In the ARM Template that was originally deployed, a web app was created as a dev
     ![image](./media/image-063.gif)
 
 1. Click on the release number in navigation header. This will allow you view the current release information.
-    
+
     ![image](./media/image-064.gif)
 
 1. After a successful build you should see the application deployed to your web app.
@@ -372,30 +364,31 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
      ![image](./media/2017-06-22_11_47_00.png)
 
-1. Copy the values from the `Web.config` into the application settings (including `AAD_APP_REDIRECTURI` - not shown). If you do not have values for these settings, please review the previous labs for the correct values.
+1. Copy the values from the `Web.config` into the application settings (you also need to include a new key named `AAD_APP_REDIRECTURI` and set the value to the URL on the application in Azure `https://dotnetapp[YOUR_ACCOUT_NAME][...].azurewebsites.net/`). If you do not have values for these settings, please review the previous labs for the correct values.
 
 1. Click `Save`.
 
-    ![image](./media/2017-06-22_11_49_00.png) 
-    
+    ![image](./media/2017-06-22_11_49_00.png)
+
 1. Navigate to the [Application Registration Portal](https://apps.dev.microsoft.com).
 
 1. Open the configuration for your application and add the Azure web application URL to the list of Redirect URLs. Click `Save`.
 
-    ![image](./media/image-033.gif) 
+    ![image](./media/image-033.gif)
 
     > Note: Be sure to include the trailing slash **/** in the URL and ensure this address is using **https**.
 
 1. Open a browser and navigate to the site. You should see the running site on Azure.
-    
+
     ![image](./media/2017-06-22_12_12_00.jpg)
 
     > If your browser displays the error `Could not load file or assembly 'System.IdentityModel.Tokens.Jwt' [...]` you have to downgrade the NuGet package `System.IdentityModel.Tokens.Jwt` to 4.0.3 in Visual Studio.
 ---
+
 ## Summary
 
 In this hands-on lab, you learned how to:
-* Create a Visual Studio Team Services online account that you used for version control of your code, automatic compiling and deploying of your web app.
+
 * Create a VSTS Git repository that you utilized to synchronize your source code on your machine and in the cloud.
 * Add your code to the VSTS Git repository.
 * Create a Continuous Integration pipeline that you used to automatically compile your application and create packages for deployment anytime code is checked into the repository.
@@ -403,7 +396,7 @@ In this hands-on lab, you learned how to:
 
 After completing this module, you can continue on to Module 5: ARM.
 
-### View Module 5 instructions for [.NET](../05-arm-cd).
+### View Module 5 instructions for [.NET](../05-arm-cd)
 
 ---
-Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at <https://opensource.org/licenses/MIT>.
