@@ -79,7 +79,7 @@ AzureAD can handle authentication for web applications. First we will create a n
 
     ![image](./media/2017-21-06_08_00_00.png)
 
-1. Provide an application name. Uncheck the `Guided Setup Let us help you get started` checkbox and click `Create`:
+1. Provide an application name using your account name at the end. Uncheck the `Guided Setup Let us help you get started` checkbox and click `Create`:
 
     ![image](./media/2018-07-12_11_40_12.png)
 
@@ -1059,7 +1059,7 @@ In the previous exercise you read data from the Microsoft Graph, but there are o
 
 1. Resolve the missing reference to `DevCamp.WebApp.Models`.
 
-1. Click `Save` -> `Build` and `F5` to start debugging. Now when you add a new incident via the `Report outage` link, you should recieve an email. Go to [outlook.office365.com/owa/](https://outlook.office365.com/owa/) to see it. Use the credentials you used to create your Azure subscription.
+1. Click `Save` -> `Build` and `F5` to start debugging. Now when you add a new incident via the `Report outage` link, you should recieve an email. Go to your inbox to see it.
 
     ![image](./media/2017-21-06_12_48_00.png)
 
