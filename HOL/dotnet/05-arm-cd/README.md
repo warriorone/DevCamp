@@ -63,7 +63,7 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/2018-07-12_13_32_25.png)
 
-    > At the time when this training has been prepared, there is a bug in the Visual Studio ARM template to create. You should fix it manually. Find the resource type `Microsoft.Insights/components` and change the location from `East US` to `[resourceGroup().location]`:
+    > At the time when this training has been prepared, there is a bug in the Visual Studio `Web App` ARM template. You should fix it manually. Find the resource type `Microsoft.Insights/components` and change the location from `East US` to `[resourceGroup().location]`:
     >
     > ![image](./media/2018-07-16_14_03_30.png)
 
