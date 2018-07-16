@@ -2,13 +2,12 @@
 
 ## Overview
 
-In this lab, you will create a Visual Studio Team Services online account, check in your code, create a Continuous Integration pipeline, and test your cloud-based application.
+In this lab, you will create a Visual Studio Team Services repository, check in your code, create a Continuous Integration pipeline, and test your cloud-based application.
 
 ## Objectives
 
 In this hands-on lab, you will learn how to:
 
-* Create a Visual Studio Team Services online account.
 * Create a VSTS Git repository.
 * Add your code to the VSTS Git repository.
 * Create a Continuous Integration pipeline.
@@ -274,11 +273,25 @@ In the ARM Template that was originally deployed, a web app was created as a dev
 
     ![image](./media/image-027.gif)
 
-1. We need to connect your VS agent with your Azure subscription so it can deploy resources. Select `Tasks` from the menu. If the drop-down next to `Azure subscription` offers you your subscription, select it, authorize it and continue to select your `dotnetapp...` Azure Web app resource from the `App Service name` drop-down.
+1. We need to connect your VS agent with your Azure subscription so it can deploy resources. Select `Tasks` from the menu. If the drop-down next to `Azure subscription` offers you your subscription:
 
-    ![image](./media/2017-06-22_09_05_00.png)
+    1. Select it, click on the arrow next to `Authorize` and select `Advanced options` from the drop-down:
 
-    1. If the drop-down next to `Azure subscription` does not offer you your subscription or the drop-down next to `App Service name` does not offer you your Azure Web app resource (give it a moment after selecting the subscription), click on `Manage`:
+        ![image](./media/2018-07-16_10_03_28.png)
+
+    1. Select `Corso-MS-Cloud` as resource group and click `Ok`:
+
+        ![image](./media/2018-07-16_10_02_59.png)
+
+    1. Select your `dotnetapp...` Azure Web app resource from the `App Service name` drop-down:
+
+        ![image](./media/2017-06-22_09_05_00.png)
+
+    1. Move to step 11.
+
+1. If the drop-down next to `Azure subscription` does not offer you your subscription or the drop-down next to `App Service name` does not offer you your Azure Web app resource (give it a moment after selecting the subscription:
+
+    1. click on `Manage`:
 
         ![image](./media/2017-06-22_11_35_00.png)
 
