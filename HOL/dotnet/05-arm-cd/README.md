@@ -1,10 +1,13 @@
 # ARM (.NET)
 
 ## Overview
+
 In this lab, you will learn to provision and manage resources in Azure with the new Azure Resource Manager.  Then we will deploy our sample application into newly created infrastructure.
 
 ## Objectives
+
 In this hands-on lab, you will learn how to:
+
 * Author Azure Resource Manager templates.
 * Deploy ARM Templates to Azure.
 * Integrate environments into VSTS Release pipelines.
@@ -13,18 +16,23 @@ In this hands-on lab, you will learn how to:
 ## Prerequisites
 
 * You should have completed the previous Continuous Integration HOL.
+* You should install the Windows Azure SDK from <https://go.microsoft.com/fwlink/?LinkId=518003&clcid=0x409>.
 
 ## Exercises
+
 This hands-on-lab has the following exercises:
+
 * [Exercise 1: Create an ARM Template in Visual Studio](#ex1)
 * [Exercise 2: Deploy ARM Template to Azure](#ex2)
 * [Exercise 3: Integrate new Web App into VSTS](#ex3)
 * [Exercise 4: Deploy City Power & Light to new Web App](#ex4)
 
 ### Note
-> In the hands-on-labs you will be using Visual Studio Solutions. Please do not update the NuGet packages to the latest available, as we have not tested the labs with every potential combination of packages. 
+
+> In the hands-on-labs you will be using Visual Studio Solutions. Please do not update the NuGet packages to the latest available, as we have not tested the labs with every potential combination of packages.
 
 ---
+
 ## Exercise 1: Create an ARM Template in Visual Studio<a name="ex1"></a>
 
 1. Open Visual Studio 2015.
@@ -51,16 +59,16 @@ This hands-on-lab has the following exercises:
 
     > Note: If the tool pane does not open, ensure that you have the latest Azure SDK installed. At the time of this writing, the latest version is 2.9.
 
-1. Our new web application will need a globally unique DNS name. Locate the `webSiteName` variable. This will synchronize the editor view with the outline view. In the editor, replace the existing value ***webSite*** with ***dotnetapptest***.
+1. Our new web application will need a globally unique DNS name. Locate the `webSiteName` variable. This will synchronize the editor view with the outline view. In the editor, replace the existing value ***webSite*** with ***dotnetapptest*** and your account name as usual e.g. ***gdinardo***.
 
-     ![image](./media/image-06.gif)
+     ![image](./media/2018-07-12_13_32_25.png)
 
-1. The web application needs to be configured to work with the AzureAD, Azure Storage, Azure Redis Cache, and ASP.NET WebAPI that we configured earlier. 
+1. The web application needs to be configured to work with the AzureAD, Azure Storage, Azure Redis Cache, and ASP.NET WebAPI that we configured earlier.
 
     In earlier exercises we have configured these settings as `Web.config` variables on our local machines, and in the Azure Portal for our `DevCamp` Azure Web App.  
 
     ARM Templates can include child `resources`, which define options for a given parent resource. For a web app, we can add `appsettings` to adjust the environment variables present on our app, instead of or in addition to using web.config.
-    
+
 1. In the JSON outline tool pane, select the `Website` parent resource. Right-click and select `Add New Resource`.
 
      ![image](./media/image-07.gif)
@@ -103,7 +111,6 @@ This hands-on-lab has the following exercises:
 
 1. Select `Application Settings` from the settings blade:
 
-
     ![image](./media/image-13.gif)
 
 1. Copy the values by double-clicking in the cell and copying the values. Paste them into the ARM template in the correct location that matches the key name.
@@ -114,9 +121,10 @@ This hands-on-lab has the following exercises:
 
     ![image](./media/image-31.gif)
 
-We are now ready to deploy our ARM Template containing an App Service Plan, and a Web App with environment variables to Azure. 
+We are now ready to deploy our ARM Template containing an App Service Plan, and a Web App with environment variables to Azure.
 
 ---
+
 ## Exercise 2: Deploy ARM Template to Azure using Visual Studio<a name="ex2"></a>
 
 1. In Visual Studio, select the ARM Project. `Right-click` and select `Deploy` -> `New...`:
@@ -125,11 +133,11 @@ We are now ready to deploy our ARM Template containing an App Service Plan, and 
 
 1. Select your subscription and resource group from the drop-downs and click `Deploy`.
 
-    ![image](./media/2017-06-23_08_48_00.png)
+    ![image](./media/2018-07-12_16_27_34.png)
 
-1. A pop up will appear where you can enter a name for your app service and select the App Service plan. Enter a name, and select `B1`. This is a basic plan.
+1. A pop up will appear where you can enter a name for your app service and select the App Service plan. Enter the name of the existing plan `incidentappplan4ig5etm56nkem`.
 
-     ![image](./media/2017-06-23_08_50_00.png)
+     ![image](./media/2018-07-12_16_37_24.png)
 
 1. Click `Save`.
 
@@ -137,7 +145,6 @@ We are now ready to deploy our ARM Template containing an App Service Plan, and 
     > Enter `Connect-AzureRmAccount`.
     > It should prompt you to log in. Follow the instructions.
     > Redeploy the template.
-
 
 1. Open the [Azure Portal](https://portal.azure.com) and verify that the app has been created in your resource group with the defined resources.
 
@@ -152,12 +159,13 @@ We are now ready to deploy our ARM Template containing an App Service Plan, and 
     ![image](./media/2017-06-23_09_26_00.png)
 
     > See [here](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-limitations/#restrictions-on-redirect-uris) for more information about redirect URIs.
-	
-	> If you encounter error messages in the browser please try a redeploy via Visual Studio.
+    >
+    > If you encounter error messages in the browser please try a redeploy via Visual Studio.
 
 The resource group is now holding our "Test" environment web app and has been added to our app registration.
 
 ---
+
 ## Exercise 3: Integrate new Web App into VSTS<a name="ex3"></a>
 
 1. In [VSTS](https://www.visualstudio.com/), open the **Release Definition** that we started in a previous lab. You should be be able to find this by navigating to `Releases` in the `Build & Release` menu on the top navigation. We need to create a second environment to serve as our test web app.
@@ -182,13 +190,14 @@ The resource group is now holding our "Test" environment web app and has been ad
 
     ![image](./media/2017-11-01_13_01_00.png)
 
-1.  Switch to the `Tasks` blade. Update the `App service name` to match the web app that you just deployed via the ARM Template. The task now targets the test environment web app, rather than the dev environment web app.
+1. Switch to the `Tasks` blade. Update the `App service name` to match the web app that you just deployed via the ARM Template. The task now targets the test environment web app, rather than the dev environment web app.
 
     ![image](./media/2017-06-23_10_39_00.png)
 
 1. Save your Release Definition to finish adding the additional environment.
 
 ---
+
 ## Exercise 4: Deploy City Power & Light to new Web App<a name="ex4"></a>
 
 With the updated Release Definition, we can now execute a release.
@@ -218,9 +227,11 @@ With the updated Release Definition, we can now execute a release.
 We have now created a new "test" environment web app and app service plan via an ARM Template, and integrated the new environment into our VSTS Release Definition.
 
 ---
+
 ## Summary
 
 In this hands-on lab, you learned how to:
+
 * Create an ARM Template in Visual Studio Code.
 * Deploy ARM Template to Azure via the XPlat CLI.
 * Integrate new Web App into VSTS.
@@ -228,7 +239,7 @@ In this hands-on lab, you learned how to:
 
 After completing this module, you can continue on to Module 6: Monitoring with Application Insights.
 
-### View Module 6 instructions for [.NET](../06-appinsights).
+### View Module 6 instructions for [.NET](../06-appinsights)
 
 ---
-Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at <https://opensource.org/licenses/MIT>.
