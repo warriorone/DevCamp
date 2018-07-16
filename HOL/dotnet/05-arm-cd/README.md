@@ -61,7 +61,11 @@ This hands-on-lab has the following exercises:
 
 1. Our new web application will need a globally unique DNS name. Locate the `webSiteName` variable. This will synchronize the editor view with the outline view. In the editor, replace the existing value ***webSite*** with ***dotnetapptest*** and your account name as usual e.g. ***gdinardo***.
 
-     ![image](./media/2018-07-12_13_32_25.png)
+    ![image](./media/2018-07-12_13_32_25.png)
+
+    > At the time when this training has been prepared, there is a bug in the Visual Studio ARM template to create. You should fix it manually. Find the resource type `Microsoft.Insights/components` and change the location from `East US` to `[resourceGroup().location]`:
+    >
+    > ![image](./media/2018-07-16_14_03_30.png)
 
 1. The web application needs to be configured to work with the AzureAD, Azure Storage, Azure Redis Cache, and ASP.NET WebAPI that we configured earlier.
 
