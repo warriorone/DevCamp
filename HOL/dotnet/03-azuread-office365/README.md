@@ -471,11 +471,11 @@ AzureAD can handle authentication for web applications. First we will create a n
 
 ### Before
 
-    ![image](./media/2017-21-06_10_12_00.png)
+   ![image](./media/2017-21-06_10_12_00.png)
 
 ### After
 
-    ![image](./media/2017-21-06_10_14_00.png)
+   ![image](./media/2017-21-06_10_14_00.png)
 
 1. Go to the `Controllers` folder.
 
