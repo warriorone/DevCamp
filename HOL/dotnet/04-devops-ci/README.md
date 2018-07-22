@@ -172,19 +172,19 @@ With application code now uploaded to VSTS, we can begin to create builds via a 
 
     ![image](./media/2017-06-21_14_35_00.png)
 
+1. On the `Select your repository` be sure the source is `VSTS Git`, the `Team project` is your VSTS Project and the `Repository` is the one that was earlier created.
+
+    ![image](./media/2018-07-22_11_49_55.png)
+
 1. There are pre-built definitions for a variety of programming languages and application stacks. For this exercise select `.NET Desktop` and click `Apply`:
 
-    ![image](./media/2017-06-21_14_41_00.png)
+    ![image](./media/2018-07-22_11_54_11.png)
 
 1. The build tasks are created for us as part of the template.
 
 1. In the `Process` settings select `Hosted` as the `Agent queue`:
 
     ![image](./media/2017-10-23_13_50_00.png)
-
-1. On the `Get sources` step set the `From` value to your VSTS Project and the `Repository` to the repo that was earlier created.
-
-    ![image](./media/2017-06-22_14_40_00.png)
 
 1. Navigate to the `Build Solution` step. Add the following in the `MSBuild Arguments` text box to create a web deployment package as part of the build:
 
