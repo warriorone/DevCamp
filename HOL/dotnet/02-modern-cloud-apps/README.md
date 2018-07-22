@@ -828,7 +828,7 @@ When a new incident is reported, the user can attach a photo.  In this exercise 
 
 1. Save the files and hit `F5` to debug. Click the `Report Outage` link.
 
-1. Add a new incident with a picture and it will get uploaded to Azure storage.
+1. Add a new incident with a picture and it will get uploaded to Azure storage (please note the image should be less than 5 MB).
 
     ![image](./media/2017-06-16_16_15_00.png)
 
