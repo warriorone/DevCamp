@@ -172,7 +172,7 @@ With application code now uploaded to VSTS, we can begin to create builds via a 
 
     ![image](./media/2017-06-21_14_35_00.png)
 
-1. On the `Select your repository` be sure the source is `VSTS Git`, the `Team project` is your VSTS Project and the `Repository` is the one that was earlier created.
+1. On the `Select your repository` step, be sure the source is `VSTS Git`, the `Team project` is your VSTS Project and the `Repository` is the one that was earlier created.
 
     ![image](./media/2018-07-22_11_49_55.png)
 
