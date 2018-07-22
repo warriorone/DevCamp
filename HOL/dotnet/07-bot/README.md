@@ -1,6 +1,7 @@
 # Bots (.NET)
 
 ## Overview
+
 City Power & Light is a sample application that allows citizens to report "incidents" that have occurred in their community. It includes a landing screen, a dashboard, and a form for reporting new incidents with an optional photo. The application is implemented with several components:
 
 * Front end web application contains the user interface and business logic. This component has been implemented three times in .NET, NodeJS, and Java.
@@ -10,7 +11,9 @@ City Power & Light is a sample application that allows citizens to report "incid
 In this lab, you will continue enhancing the overall City Power & Light experience by creating an incident reporting bot from scratch and via the Azure Bot Service and host it in Azure. The bot will be able to gather data from a user with an optional photo and submit it to the WebAPI.
 
 ## Objectives
+
 In this hands-on lab, you will learn how to:
+
 * Set up the developing environment to support the creation of bot applications.
 * Create your own bot from scratch.
 * Create your own bot using Azure Bot Service.
@@ -18,25 +21,29 @@ In this hands-on lab, you will learn how to:
 * Hosting your bot in Azure.
 
 ## Prerequisites
-* The source for the starter app is located in the [start](start) folder. 
-* The finished project is located in the [end](end) folder. 
+
+* The source for the starter app is located in the [start](start) folder.
+* The finished project is located in the [end](end) folder.
 * Deployed the starter ARM Template [HOL 1](../01-developer-environment).
 * Completion of the [HOL 5](../05-arm-cd).
 
 > **Note**: If you did not complete the previous labs, the project in the [start](start) folder is cumulative. But you need to add the previous HOL's settings to the `Web.config` file.
 
 ## Exercises
+
 This hands-on-lab has the following exercises:
+
 * [Exercise 1: Set up your environment](#ex1)
 * [Exercise 2: Create an interactive dialog](#ex2)
 * [Exercise 3: Integrate the API](#ex3)
 * [Exercise 4: Send attachments to the bot](#ex4)
 * [Exercise 5: Analyze submitted pictures automatically](#ex5)
 * [Exercise 6: Host your bot in Azure](#ex6)
-* [Exercise 7: Azure Bot Service](#ex7) 
-* [Exercise 8: Azure Functions Bot](#ex8) 
+* [Exercise 7: Azure Bot Service](#ex7)
+* [Exercise 8: Azure Functions Bot](#ex8)
 
 ---
+
 ## Exercise 1: Set up your environment<a name="ex1"></a>
 
 To develop a bot on your machine you need the `Bot Application` template for Visual Studio and the `Bot Framework Emulator`. To test your bot once it has been deployed to Azure you will need `ngrok`.
@@ -45,7 +52,7 @@ To develop a bot on your machine you need the `Bot Application` template for Vis
 
     ![image](./media/2017-07-12_10_49_00.png)
 
-    If you are using Visual Studio 2017 download the [Bot Application template](http://aka.ms/bf-bc-vstemplate) and install the template by saving the .zip file to your Visual Studio 2017 project templates directory. The Visual Studio 2017 project templates directory is typically located here: `%USERPROFILE%\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\ `.
+    If you are using Visual Studio 2017 download the [Bot Application template](http://aka.ms/bf-bc-vstemplate) and install the template by saving the .zip file to your Visual Studio 2017 project templates directory. The Visual Studio 2017 project templates directory is typically located here: `%USERPROFILE%\Documents\Visual Studio 2017\Templates\ProjectTemplates\Visual C#\`.
 
 1. We will use the locally installed `Bot Framework Emulator` to test our bot. Once the bot is registered it can also be tested in the Bot Framework Portal. There you can configure the channels your bot will support. It can be integrated into a website, reached via Skype and many other channels.
 
@@ -68,6 +75,7 @@ To develop a bot on your machine you need the `Bot Application` template for Vis
     ![image](./media/2018-01-22_08_49_00.png)
 
 ---
+
 ## Exercise 2: Create an interactive dialog<a name="ex2"></a>
 
 We are using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) template to create our bot. The template let's you define a number of properties, including ones based on enums, that the bot will automatically gather from the user. We can even modify the text the bot uses to prompt the user and simply add regular expressions that are verified by the bot.
@@ -95,7 +103,7 @@ We are using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotne
     namespace CityPowerBot
     {
         public enum IncidentTypes { GasLeak = 1, StreetLightStaysOn };
-        
+
         // For more information about this template visit http://aka.ms/azurebots-csharp-form
         [Serializable]
         public class BasicForm
@@ -114,7 +122,7 @@ We are using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotne
 
             [Prompt("Please give a {&} of the problem.")]
             public string Description { get; set; }
-            
+
             [Pattern(@"(<Undefined control sequence>\d)?\s*\d{3}(-|\s*)\d{4}")]
             [Prompt("What is the {&} where we can currently reach you?")]
             public string PhoneNumber { get; set; }
@@ -131,7 +139,7 @@ We are using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotne
             [Pattern(@"^\d{5}(?:[-\s]\d{4})?$")]
             [Prompt("What is your {&}?")]
             public string ZipCode { get; set; }
-            
+
             public static IForm<BasicForm> BuildForm()
             {
                 // Builds an IForm<T> based on BasicForm
@@ -161,7 +169,7 @@ We are using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotne
     ```
 
     Note how we can use the `IncidentTypes` enum and the boolean property `Emergency`. The `FormBuilder` will automatically turn these types into choices presented to the user. Two regular expressions check the format of the `PhoneNumber` and `ZipCode` properties.
-    
+
 1. Let's test the new bot. Hit `F5` to start the debugging process. The Internet Explorer will open and display bot information. Note the address.
 
 1. Start the `Bot Framework Emulator`.
@@ -180,13 +188,14 @@ We are using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotne
 
     ![image](./media/2017-07-11_16_01_00.png)
 
-You have now created a rudimentary bot that gathers all the data we need for an incident report from the user using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) template which does most of the work for you. Next you will extend the bot to also accept an image for the report. 
+You have now created a rudimentary bot that gathers all the data we need for an incident report from the user using the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) template which does most of the work for you. Next you will extend the bot to also accept an image for the report.
 
 ---
+
 ## Exercise 3: Send attachments to the bot<a name="ex3"></a>
 
 Did you notice the image button next to the message window? You can not only send text messages to your bot but also image files. Let's tell the bot how to handle them.
-    
+
 1. In the `CityPowerBot` -> `Controllers` -> `MessagesController.cs` replace the creation of the `MainDialog` with a switch that filters messages containing images while letting the existing `MainDialog` handle all the other messages.
 
     ```csharp
@@ -235,7 +244,7 @@ Did you notice the image button next to the message window? You can not only sen
     }
 
     /// <summary>
-    /// Gets the JwT token of the bot. 
+    /// Gets the JwT token of the bot.
     /// </summary>
     /// <param name="connector"></param>
     /// <returns>JwT token of the bot</returns>
@@ -262,9 +271,9 @@ Did you notice the image button next to the message window? You can not only sen
 1. Hit `F5` to start the debugging process and talk to your bot via the `Bot Framework Emulator`. Note that the bot is informing you about its new capability. During the interaction click the image button and send an image from your machine. The bot will confirm that it "got your image".
 
     ![image](./media/2017-07-11_16_07_00.png)
-    
+
     The DevCamp folder contains many images that you can use to test the feature.
-    
+
     ![image](./media/2017-07-11_16_08_00.png)
 
     Sending the image will not affect the rest of your conversation with the bot.
@@ -272,9 +281,10 @@ Did you notice the image button next to the message window? You can not only sen
 Your bot now accepts and stores an image send by the user. Now that you have everything that can be submitted in an incident report you are going to send it to the incident API.
 
 ---
+
 ## Exercise 4: Integrate the API<a name="ex4"></a>
 
-To file the reported incident we use the incident API. The necessary methods are present in the `DataWriter` project. The project contains excerpts from the previous hands on labs. The code was shortened to just create an incident and upload the attached image. To complete it you have to add your Azure account information. 
+To file the reported incident we use the incident API. The necessary methods are present in the `DataWriter` project. The project contains excerpts from the previous hands on labs. The code was shortened to just create an incident and upload the attached image. To complete it you have to add your Azure account information.
 
 1. Open `web.config` of the `CityPowerBot Project` and replace the value for `INCIDENT_API_URL` with the URL of your incident API which you retrieved in [HOL 2 exercise 1]((../02-modern-cloud-apps)#ex1) and looks similar to `http://incidentapi[...].azurewebsites.net`.
 
@@ -309,13 +319,13 @@ To file the reported incident we use the incident API. The necessary methods are
 
     ```csharp
     .Field(nameof(PhoneNumber))
-    
+
     .Confirm(async (state) =>
     {
         return new PromptAttribute($"OK, we have got all your data. Would you like to send your incident report now?");
     })
     .OnCompletion(processReport)
-    
+
     .Build();
     ```
 
@@ -329,13 +339,14 @@ To file the reported incident we use the incident API. The necessary methods are
 
     ![image](./media/2017-07-11_16_13_00.png)
 
-1. Use the Azure Storage Explorer like you did in [HOL 2 exercise 3]((../02-modern-cloud-apps)#ex3) to check that the image you attached was uploaded to the blob storage. You can double-click the image to open it in a new window.    
+1. Use the Azure Storage Explorer like you did in [HOL 2 exercise 3]((../02-modern-cloud-apps)#ex3) to check that the image you attached was uploaded to the blob storage. You can double-click the image to open it in a new window.
 
     ![image](./media/2017-07-11_16_14_00.png)
 
 Your bot gathers and uploads data in the next exercise it will also analyze the data using the Azure Cognitive Services.
 
 ---
+
 ## Exercise 5: Analyze submitted pictures automatically<a name="ex5"></a>
 
 Azure Cognitive Services offer multiple exciting APIs that can be utilized to add advanced features to your apps. In this exercise we will use the Computer Vision API to analyze the pictures submitted to the bot and automatically add a description and the most likely tags to our data before it gets submitted to the incident service.
@@ -503,6 +514,7 @@ Azure Cognitive Services offer multiple exciting APIs that can be utilized to ad
 Your bot is finished. It gathers, analyses and uploads data to create a new incident report. Next you are going to deploy it to Azure to make it globally accessible.
 
 ---
+
 ## Exercise 6: Host your bot in Azure<a name="ex6"></a>
 
 To make our bot accessible we have to publish it in a public location. An Azure app is idealy suited for this. We will let Visual Studio do the publishing and automatically create a new Azure app in our resource group to host the bot. Once the Visual Studio publishing wizard has done this we will register the bot in the [Bot Framework Portal](https://dev.botframework.com/bots) and add the generated IDs to our `Web.config`.
@@ -515,7 +527,7 @@ To make our bot accessible we have to publish it in a public location. An Azure 
 
     ![image](./media/2017-07-12_12_39_00.png)
 
-1. Select the `DevCamp` resource group and click `New...`. 
+1. Select the `Corso-MS-Cloud` resource group and click `New...`.
 
     ![image](./media/2017-07-12_12_36_00.png)
 
@@ -578,7 +590,7 @@ To make our bot accessible we have to publish it in a public location. An Azure 
 1. Enter the bot's HTTPS endpoint into the address bar of the Emulator. It should look similar to this: `https://citypowerbot20170712104043.azurewebsites.net/api/messages`. Also provide the `Microsoft App ID` and the `Microsoft App Password` you noted earlier. Then click `CONNECT`. Test your bot as before.
 
     ![image](./media/2017-07-12_13_46_00.png)
-    
+
     > If you get a Server 500 error message try removing the `Microsoft App ID` and the `Microsoft App Password` and reconnect to the bot.
 
 1. You can also verify your bot by using the `Test in Web Chat` blade within the Azure bot channel registration. **If you cannot connect to the bot try different web browsers.**
@@ -592,6 +604,7 @@ To make our bot accessible we have to publish it in a public location. An Azure 
 You have now manually created a bot and uploaded it to Azure. An alternative way of creating a bot is using the Azure Bot Service.
 
 ---
+
 ## Exercise 7: Azure Bot Service<a name="ex7"></a>
 
 You have seen some of the basics of bot development. In the exercises you have used the [FormFlow](https://docs.microsoft.com/en-us/bot-framework/dotnet/bot-builder-dotnet-formflow) template to create the interaction between the user and the bot. Many other templates are available. You can also use [Azure Bot Service](https://docs.microsoft.com/en-us/bot-framework/azure/azure-bot-service-overview) to quickly create a bot from within the Azure portal.
@@ -710,7 +723,7 @@ Instead of using an Azure App, we will deploy the bot to an Azure Functions App.
 
 In the following steps you will create a Telegram bot and connect it to the Functions Bot. Then the Functions Bot can be used in Telegram e.g. in group chats to translate your messages for other users.
 
-1. Install the Telegram app for your device. Got to https://telegram.org/apps and select the preferred download link. To create an account, you need a valid phone number.
+1. Install the Telegram app for your device. Got to <https://telegram.org/apps> and select the preferred download link. To create an account, you need a valid phone number.
 
 1. Create a new telegram bot using [@BotFather](https://t.me/botfather). Start a conversation with the bot by following the link https://t.me/botfather or search for `BotFather` in your contacts.
 
@@ -772,247 +785,249 @@ In this exercise you will configure the Functions Bot. The goal is to connect it
 
 1. Replace the contents of the file `EchoDialog.csx` with the following code and click on `Save and run`. Make sure to replace `YOUR_SUBSCRIPTION_KEY` in line 195 with your Translator Text API subscription key. Read from mark 5. of [Exercise 8: 2. Cognitive Services and the Translator Text API](#ex8-2) for how to retrieve your subscription key.
 
-	```csharp
-	using System;
-	using System.IO;
-	using System.Net;
-	using System.Net.Http;
-	using System.Runtime.Serialization;
-	using System.Threading.Tasks;
-	using System.Text;
-	using System.Web;
-	using Microsoft.Bot.Builder.Dialogs;
-	using Microsoft.Bot.Connector;
-	using Newtonsoft.Json;
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Net;
+    using System.Net.Http;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+    using System.Text;
+    using System.Web;
+    using Microsoft.Bot.Builder.Dialogs;
+    using Microsoft.Bot.Connector;
+    using Newtonsoft.Json;
 
-	public enum Language
-	{
-		Chinese,   // zh
-		Croatian,  // hr
-		English,   // en
-		French,    // fr
-		German,    // de
-		Russian,   // ru
-		Vietnamese // vi
-	}
+    public enum Language
+    {
+        Chinese,   // zh
+        Croatian,  // hr
+        English,   // en
+        French,    // fr
+        German,    // de
+        Russian,   // ru
+        Vietnamese // vi
+    }
 
-	public class DetectedLanguage
-	{
-		public string Language { get; set; }
-		public double Score { get; set; }
-	}
+    public class DetectedLanguage
+    {
+        public string Language { get; set; }
+        public double Score { get; set; }
+    }
 
-	public class Translation
-	{
-		public string Text { get; set; }
-		public string To { get; set; }
-	}
+    public class Translation
+    {
+        public string Text { get; set; }
+        public string To { get; set; }
+    }
 
-	public class TranslateResult
-	{
-		public DetectedLanguage DetectedLanguage { get; set; }
-		public IList<Translation> Translations { get; set; }
-	}
+    public class TranslateResult
+    {
+        public DetectedLanguage DetectedLanguage { get; set; }
+        public IList<Translation> Translations { get; set; }
+    }
 
-	// For more information about this template visit http://aka.ms/azurebots-csharp-basic
-	[Serializable]
-	public class EchoDialog : IDialog<object>
-	{
-		public static IList<Language> _languages = new List<Language>();
+    // For more information about this template visit http://aka.ms/azurebots-csharp-basic
+    [Serializable]
+    public class EchoDialog : IDialog<object>
+    {
+        public static IList<Language> _languages = new List<Language>();
 
-		public Task StartAsync(IDialogContext context)
-		{
-			try
-			{
-				context.Wait(MessageReceivedAsync);
-			}
-			catch (OperationCanceledException error)
-			{
-				return Task.FromCanceled(error.CancellationToken);
-			}
-			catch (Exception error)
-			{
-				return Task.FromException(error);
-			}
+        public Task StartAsync(IDialogContext context)
+        {
+            try
+            {
+                context.Wait(MessageReceivedAsync);
+            }
+            catch (OperationCanceledException error)
+            {
+                return Task.FromCanceled(error.CancellationToken);
+            }
+            catch (Exception error)
+            {
+                return Task.FromException(error);
+            }
 
-			return Task.CompletedTask;
-		}
+            return Task.CompletedTask;
+        }
 
-		public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
-		{
-			var message = await argument;
-			if (message.Text == "/add") 
-			{
-				PromptDialog.Choice(
-					context: context,
-					resume: ResumeAddLanguage,
-					options: (IEnumerable<Language>)Enum.GetValues(typeof(Language)),
-					prompt: "I will translate all your messages for you. Select a language to add it to the list of languages.",
-					retry: "I didn't understand. Please try again.");
-			}
-			else if (message.Text == "/reset")
-			{
-				_languages.Clear();
+        public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
+        {
+            var message = await argument;
+            if (message.Text == "/add")
+            {
+                PromptDialog.Choice(
+                    context: context,
+                    resume: ResumeAddLanguage,
+                    options: (IEnumerable<Language>)Enum.GetValues(typeof(Language)),
+                    prompt: "I will translate all your messages for you. Select a language to add it to the list of languages.",
+                    retry: "I didn't understand. Please try again.");
+            }
+            else if (message.Text == "/reset")
+            {
+                _languages.Clear();
 
-				await context.PostAsync("All languages have been deleted. Enter /add to add a new language.");
-			}
-			else if (message.Text == "/show")
-			{
-				string languages = string.Empty;
+                await context.PostAsync("All languages have been deleted. Enter /add to add a new language.");
+            }
+            else if (message.Text == "/show")
+            {
+                string languages = string.Empty;
 
-				foreach (Language language in _languages)
-				{
-					if (languages != string.Empty)
-					{
-						languages += ", ";
-					}
-					languages += language.ToString();
-				}
+                foreach (Language language in _languages)
+                {
+                    if (languages != string.Empty)
+                    {
+                        languages += ", ";
+                    }
+                    languages += language.ToString();
+                }
 
-				await context.PostAsync("You have selected the following languages: " + languages);
-			}
-			else
-			{
-				var text = string.Empty;
-				if (!string.IsNullOrEmpty(message.From.Name))
-				{
-					text += $"{message.From.Name}:\r\n";
-				}
+                await context.PostAsync("You have selected the following languages: " + languages);
+            }
+            else
+            {
+                var text = string.Empty;
+                if (!string.IsNullOrEmpty(message.From.Name))
+                {
+                    text += $"{message.From.Name}:\r\n";
+                }
 
-				IList<string> toLocales = new List<string>();
+                IList<string> toLocales = new List<string>();
 
-				foreach (Language language in _languages)
-				{
-					if (language == Language.Chinese)
-					{
-						toLocales.Add("zh");
-					}
-					else if (language == Language.Croatian)
-					{
-						toLocales.Add("hr");
-					}
-					else if (language == Language.English)
-					{
-						toLocales.Add("en");
-					}
-					else if (language == Language.German)
-					{
-						toLocales.Add("de");
-					}
-					else if (language == Language.French)
-					{
-						toLocales.Add("fr");
-					}
-					else if (language == Language.Russian)
-					{
-						toLocales.Add("ru");
-					}
-					else if (language == Language.Vietnamese)
-					{
-						toLocales.Add("vi");
-					}
-				}
+                foreach (Language language in _languages)
+                {
+                    if (language == Language.Chinese)
+                    {
+                        toLocales.Add("zh");
+                    }
+                    else if (language == Language.Croatian)
+                    {
+                        toLocales.Add("hr");
+                    }
+                    else if (language == Language.English)
+                    {
+                        toLocales.Add("en");
+                    }
+                    else if (language == Language.German)
+                    {
+                        toLocales.Add("de");
+                    }
+                    else if (language == Language.French)
+                    {
+                        toLocales.Add("fr");
+                    }
+                    else if (language == Language.Russian)
+                    {
+                        toLocales.Add("ru");
+                    }
+                    else if (language == Language.Vietnamese)
+                    {
+                        toLocales.Add("vi");
+                    }
+                }
 
-				text += await Translate(message.Text, toLocales);
+                text += await Translate(message.Text, toLocales);
 
-				await context.PostAsync(text);
+                await context.PostAsync(text);
 
-				context.Wait(MessageReceivedAsync);
-			}
-		}
+                context.Wait(MessageReceivedAsync);
+            }
+        }
 
-		public async Task ResumeAddLanguage(IDialogContext context, IAwaitable<Language> result)
-		{
-			Language newLanguage = await result;
+        public async Task ResumeAddLanguage(IDialogContext context, IAwaitable<Language> result)
+        {
+            Language newLanguage = await result;
 
-			if (!_languages.Contains(newLanguage))
-			{
-				_languages.Add(newLanguage);
-			}
+            if (!_languages.Contains(newLanguage))
+            {
+                _languages.Add(newLanguage);
+            }
 
-			string message = string.Empty;
+            string message = string.Empty;
 
-			foreach (Language language in _languages)
-			{
-				if (message != string.Empty)
-				{
-					message += ", ";
-				}
-				message += language.ToString();
-			}
+            foreach (Language language in _languages)
+            {
+                if (message != string.Empty)
+                {
+                    message += ", ";
+                }
+                message += language.ToString();
+            }
 
-			await context.PostAsync("Thanks. Your messages will be translated to: " + message);
-		}
+            await context.PostAsync("Thanks. Your messages will be translated to: " + message);
+        }
 
-		public async Task<string> Translate(string text, IList<string> toLocales)
-		{
-			if (toLocales.Count == 0)
-			{
-				return string.Empty;
-			}
+        public async Task<string> Translate(string text, IList<string> toLocales)
+        {
+            if (toLocales.Count == 0)
+            {
+                return string.Empty;
+            }
 
-			string url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
-			foreach (string toLocale in toLocales)
-			{
-				url += "&to=" + toLocale;
-			}
+            string url = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
+            foreach (string toLocale in toLocales)
+            {
+                url += "&to=" + toLocale;
+            }
 
-			System.Object[] body = new System.Object[] { new { Text = text } };
-			string requestBody = JsonConvert.SerializeObject(body);
+            System.Object[] body = new System.Object[] { new { Text = text } };
+            string requestBody = JsonConvert.SerializeObject(body);
 
-			using (HttpClient httpClient = new HttpClient())
-			{
-				using (HttpRequestMessage httpRequestMessage = new HttpRequestMessage())
-				{
-					httpRequestMessage.Method = HttpMethod.Post;
-					httpRequestMessage.RequestUri = new Uri(url);
-					httpRequestMessage.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-					httpRequestMessage.Headers.Add("Ocp-Apim-Subscription-Key", "YOUR_SUBSCRIPTION_KEY");
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpRequestMessage httpRequestMessage = new HttpRequestMessage())
+                {
+                    httpRequestMessage.Method = HttpMethod.Post;
+                    httpRequestMessage.RequestUri = new Uri(url);
+                    httpRequestMessage.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    httpRequestMessage.Headers.Add("Ocp-Apim-Subscription-Key", "YOUR_SUBSCRIPTION_KEY");
 
-					HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-					string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
+                    HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+                    string responseBody = await httpResponseMessage.Content.ReadAsStringAsync();
 
-					IList<TranslateResult> translateResults = JsonConvert.DeserializeObject<IList<TranslateResult>>(responseBody);
+                    IList<TranslateResult> translateResults = JsonConvert.DeserializeObject<IList<TranslateResult>>(responseBody);
 
-					string result = string.Empty;
-					foreach (var translateResult in translateResults)
-					{
-						foreach (Translation translation in translateResult.Translations)
-						{
-							result += translation.Text + "\r\n\r\n";
-						}
-					}
-					return result;
-				}
-			}
-		}
-	}
-	```
+                    string result = string.Empty;
+                    foreach (var translateResult in translateResults)
+                    {
+                        foreach (Translation translation in translateResult.Translations)
+                        {
+                            result += translation.Text + "\r\n\r\n";
+                        }
+                    }
+                    return result;
+                }
+            }
+        }
+    }
+    ```
 
 1. Go back to the Web Chat to test the new code. Enter something to start the conversation with the bot. The bot will send you a welcome message which includes some commands you can use to configure the translation. Enter `/add` and select the language to which your messages should be translated. Repeat it if you want your messages to be translate to more than one language.
 
-	![image](./media/azure-functions-bot/azure-portal-translatortextbot-test-in-web-chat.png)
+    ![image](./media/azure-functions-bot/azure-portal-translatortextbot-test-in-web-chat.png)
 
 1. Open Telegram messenger and start a group chat. Add your bot to your chat by selecting `Add Members` and enter the name of your bot. In this example we add the `Microsoft Translator API` bot.
 
-	![image](./media/azure-functions-bot/telegram-add-members-microsoft-translator-api.png)
+    ![image](./media/azure-functions-bot/telegram-add-members-microsoft-translator-api.png)
 
 1. Enter `/add` and select the language to which your messages should be translated.
 
-	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add.png)
+    ![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add.png)
 
 1. After selecting the language the bot shows the language which was selected.
 
-	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add-thanks.png)
+    ![image](./media/azure-functions-bot/telegram-microsoft-translator-api-add-thanks.png)
 
 1. Enter a message in the group chat. The message will be translated to the selected language.
 
-	![image](./media/azure-functions-bot/telegram-microsoft-translator-api-test.png)
+    ![image](./media/azure-functions-bot/telegram-microsoft-translator-api-test.png)
 
 ---
+
 ## Summary
 
 In this hands-on lab, you learned how to:
+
 * Set up the developing environment to support the creation of bot applications.
 * Create your own bot from scratch.
 * Create your own bot using Azure Bot Service.
@@ -1022,5 +1037,6 @@ In this hands-on lab, you learned how to:
 After completing this module, you can continue on to Module 9: IoT.
 
 ### View Module 9 instructions for [.NET](../11-IoT/)
+
 ---
-Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at https://opensource.org/licenses/MIT.
+Copyright 2018 Microsoft Corporation. All rights reserved. Except where otherwise noted, these materials are licensed under the terms of the MIT License. You may use them according to the license as is most appropriate for your project. The terms of this license can be found at <https://opensource.org/licenses/MIT>.
