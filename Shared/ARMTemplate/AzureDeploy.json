@@ -95,7 +95,7 @@
                         "DOCUMENTDB_ENDPOINT": "https://incidentdb4ig5etm56nkem.documents.azure.com:443/",
                         "DOCUMENTDB_COLLECTIONID": "[variables('docDBCollectionId')]",
                         "DOCUMENTDB_DATABASEID": "[variables('docDBName')]",
-                        "DOCUMENTDB_PRIMARY_KEY": "HUMcXG3F321l2eqOwQDF1eLtQ88sRQHxlTfYytGzrBXrPzMxMwpOnzpSTBQ0C5eNvObSN6KF5JDzbV08UhsuDA==",
+                        "DOCUMENTDB_PRIMARY_KEY": "RdGHLtNbFyhkqx1zE7UAJCUjNQEDnPMj49ckPqzYCMyrYlIyCrLcfW6EsfbKOjBWj03Xzffyfz05zPBBumvxNA==",
                         "REDISCACHE_HOSTNAME": "[reference(resourceId('Microsoft.Cache/Redis', variables('redisCacheName')), '2014-04-01').hostName]",
                         "REDISCACHE_PORT": "[reference(resourceId('Microsoft.Cache/Redis', variables('redisCacheName')), '2014-04-01').port]",
                         "REDISCACHE_SSLPORT": "[reference(resourceId('Microsoft.Cache/Redis', variables('redisCacheName')), '2014-04-01').sslPort]",
